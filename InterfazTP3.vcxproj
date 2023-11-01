@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{5FDF01C7-4069-4B97-99E8-80ED5A5A922A}</ProjectGuid>
+    <EnableManagedPackageReferenceSupport>true</EnableManagedPackageReferenceSupport>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <Keyword>ManagedCProj</Keyword>
+    <RootNamespace>InterfazTP3</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>main</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ConsultaAdmin.cpp" />
+    <ClCompile Include="ConsultaCiudad.cpp" />
+    <ClCompile Include="ConsultaCliente.cpp" />
+    <ClCompile Include="ConsultaMenu.cpp" />
+    <ClCompile Include="ConsultaPais.cpp" />
+    <ClCompile Include="ConsultaProducto.cpp" />
+    <ClCompile Include="ConsultaRestaurante.cpp" />
+    <ClCompile Include="InsertarAdmin.cpp" />
+    <ClCompile Include="InsertarCiudad.cpp" />
+    <ClCompile Include="InsertarCliente.cpp" />
+    <ClCompile Include="InsertarMenu.cpp" />
+    <ClCompile Include="InsertarPais.cpp" />
+    <ClCompile Include="InsertarProducto.cpp" />
+    <ClCompile Include="InsertarRest.cpp" />
+    <ClCompile Include="ModificarAdmin.cpp" />
+    <ClCompile Include="ModificarCiudad.cpp" />
+    <ClCompile Include="ModificarCliente.cpp" />
+    <ClCompile Include="ModificarCompra.cpp" />
+    <ClCompile Include="ModificarMenu.cpp" />
+    <ClCompile Include="ModificarPais.cpp" />
+    <ClCompile Include="ModificarProducto.cpp" />
+    <ClCompile Include="ModificarRest.cpp" />
+    <ClCompile Include="OpcionesAdmin.cpp" />
+    <ClCompile Include="OpcionesCiudad.cpp" />
+    <ClCompile Include="OpcionesClientes.cpp" />
+    <ClCompile Include="OpcionesMenu.cpp" />
+    <ClCompile Include="OpcionesPaises.cpp" />
+    <ClCompile Include="OpcionesProd.cpp" />
+    <ClCompile Include="OpcionesRest.cpp" />
+    <ClCompile Include="RegistrarCompra.cpp" />
+    <ClCompile Include="ventana1.cpp" />
+    <ClCompile Include="VentanaLugares.cpp" />
+    <ClCompile Include="VentanaRest.cpp" />
+    <ClCompile Include="VentanaUsuarios.cpp" />
+    <ClCompile Include="VistaAdmin.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ConsultaAdmin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ConsultaCiudad.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ConsultaCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ConsultaMenu.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ConsultaPais.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ConsultaProducto.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ConsultaRestaurante.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="InsertarAdmin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="InsertarCiudad.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="InsertarCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="InsertarMenu.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="InsertarPais.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="InsertarProducto.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="InsertarRest.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ModificarAdmin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ModificarCiudad.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ModificarCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ModificarCompra.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ModificarMenu.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ModificarPais.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ModificarProducto.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ModificarRest.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesAdmin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesCiudad.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesClientes.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesMenu.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesPaises.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesProd.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesRest.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="RegistrarCompra.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="TP3.h" />
+    <ClInclude Include="ventana1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="VentanaLugares.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="VentanaRest.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="VentanaUsuarios.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="VistaAdmin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ConsultaAdmin.resx">
+      <DependentUpon>ConsultaAdmin.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultaCiudad.resx">
+      <DependentUpon>ConsultaCiudad.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultaCliente.resx">
+      <DependentUpon>ConsultaCliente.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultaMenu.resx">
+      <DependentUpon>ConsultaMenu.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultaPais.resx">
+      <DependentUpon>ConsultaPais.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultaProducto.resx">
+      <DependentUpon>ConsultaProducto.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultaRestaurante.resx">
+      <DependentUpon>ConsultaRestaurante.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertarAdmin.resx">
+      <DependentUpon>InsertarAdmin.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertarCiudad.resx">
+      <DependentUpon>InsertarCiudad.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertarCliente.resx">
+      <DependentUpon>InsertarCliente.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertarMenu.resx">
+      <DependentUpon>InsertarMenu.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertarPais.resx">
+      <DependentUpon>InsertarPais.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertarProducto.resx">
+      <DependentUpon>InsertarProducto.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertarRest.resx">
+      <DependentUpon>InsertarRest.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarAdmin.resx">
+      <DependentUpon>ModificarAdmin.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarCiudad.resx">
+      <DependentUpon>ModificarCiudad.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarCliente.resx">
+      <DependentUpon>ModificarCliente.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarMenu.resx">
+      <DependentUpon>ModificarMenu.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarPais.resx">
+      <DependentUpon>ModificarPais.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarProducto.resx">
+      <DependentUpon>ModificarProducto.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarRest.resx">
+      <DependentUpon>ModificarRest.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesAdmin.resx">
+      <DependentUpon>OpcionesAdmin.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesCiudad.resx">
+      <DependentUpon>OpcionesCiudad.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesClientes.resx">
+      <DependentUpon>OpcionesClientes.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesMenu.resx">
+      <DependentUpon>OpcionesMenu.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesPaises.resx">
+      <DependentUpon>OpcionesPaises.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesProd.resx">
+      <DependentUpon>OpcionesProd.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesRest.resx">
+      <DependentUpon>OpcionesRest.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ventana1.resx">
+      <DependentUpon>ventana1.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaLugares.resx">
+      <DependentUpon>VentanaLugares.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaRest.resx">
+      <DependentUpon>VentanaRest.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaUsuarios.resx">
+      <DependentUpon>VentanaUsuarios.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaAdmin.resx">
+      <DependentUpon>VistaAdmin.h</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
