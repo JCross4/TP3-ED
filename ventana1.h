@@ -21,7 +21,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class ventana1 : public System::Windows::Forms::Form
 	{
-	public: arbolBinarioPais* APaises; ArbolRN* ARestaurantes; ArbolAAMenu* AMenu; arbolAVLProducto* AProducto; ArbolB* AClientes; ArbolB* AAdmins; listaCola* LFila; listaS* LCompra;
+	public: arbolBinarioPais* APaises; ArbolRN* ARestaurantes; ArbolAAMenu* AMenu; arbolAVLProducto* AProducto; ArbolB* AClientes; ArbolB* AAdmins; listaCola* LFila; listaS* LCompra; listaS* LContacto;
 	public:
 		ventana1(void)
 		{
@@ -30,10 +30,10 @@ namespace InterfazTP3 {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-		ventana1(arbolBinarioPais* ptrPaises, ArbolRN* ptrRestaurantes, ArbolAAMenu* ptrMenu, arbolAVLProducto* ptrProducto, ArbolB* ptrClientes, ArbolB* ptrAdmins, listaCola* ptrFila, listaS* ptrCompra)
+		ventana1(arbolBinarioPais* ptrPaises, ArbolRN* ptrRestaurantes, ArbolAAMenu* ptrMenu, arbolAVLProducto* ptrProducto, ArbolB* ptrClientes, ArbolB* ptrAdmins, listaCola* ptrFila, listaS* ptrCompra, listaS* ptrContacto)
 		{
 			InitializeComponent();
-			APaises = ptrPaises; ARestaurantes = ptrRestaurantes; AMenu = ptrMenu; AProducto = ptrProducto; AClientes = ptrClientes; AAdmins = ptrAdmins; LFila = ptrFila; LCompra = ptrCompra;
+			APaises = ptrPaises; ARestaurantes = ptrRestaurantes; AMenu = ptrMenu; AProducto = ptrProducto; AClientes = ptrClientes; AAdmins = ptrAdmins; LFila = ptrFila; LCompra = ptrCompra; LContacto = ptrContacto;
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -233,7 +233,7 @@ private: System::Void entrar_Click_1(System::Object^ sender, System::EventArgs^ 
 		if (administradorUsuario) {
 			if (AAdmins->validarCedula(intCedula)) {
 				MessageBox::Show("El administrador existe", "Admin", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
-				VistaAdmin^ vistaA = gcnew VistaAdmin(APaises, ARestaurantes, AMenu, AProducto, AClientes, AAdmins, LFila, LCompra);
+				VistaAdmin^ vistaA = gcnew VistaAdmin(APaises, ARestaurantes, AMenu, AProducto, AClientes, AAdmins, LFila, LCompra, LContacto);
 				vistaA->ShowDialog();
 			}
 			else {

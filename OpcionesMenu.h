@@ -1,4 +1,10 @@
 #pragma once
+#include <msclr\marshal_cppstd.h>
+#include <iostream>
+#include "TP3.h"
+#include "InsertarMenu.h"
+#include "ModificarMenu.h"
+#include "ConsultaMenu.h"
 
 namespace InterfazTP3 {
 
@@ -14,6 +20,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class OpcionesMenu : public System::Windows::Forms::Form
 	{
+	public: arbolBinarioPais* APaises; ArbolRN* ARest; ArbolAAMenu* AMenu;
 	public:
 		OpcionesMenu(void)
 		{
@@ -21,6 +28,14 @@ namespace InterfazTP3 {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+		}
+		OpcionesMenu(arbolBinarioPais* ptrPais, ArbolRN* ptrRest, ArbolAAMenu* ptrMenu)
+		{
+			InitializeComponent();
+
+			APaises = ptrPais;
+			ARest = ptrRest;
+			AMenu = ptrMenu;
 		}
 
 	protected:
@@ -80,6 +95,7 @@ namespace InterfazTP3 {
 			this->button4->TabIndex = 6;
 			this->button4->Text = L"Búsqueda";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &OpcionesMenu::button4_Click);
 			// 
 			// button2
 			// 
@@ -91,6 +107,7 @@ namespace InterfazTP3 {
 			this->button2->TabIndex = 5;
 			this->button2->Text = L"Modificación";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &OpcionesMenu::button2_Click);
 			// 
 			// button1
 			// 
@@ -102,6 +119,7 @@ namespace InterfazTP3 {
 			this->button1->TabIndex = 4;
 			this->button1->Text = L"Inserción";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &OpcionesMenu::button1_Click);
 			// 
 			// OpcionesMenu
 			// 
@@ -118,5 +136,17 @@ namespace InterfazTP3 {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		InsertarMenu^ InsMenu = gcnew InsertarMenu(APaises, ARest, AMenu);
+		InsMenu->ShowDialog();
+	}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	ModificarMenu^ ModMenu = gcnew ModificarMenu(AMenu);
+	ModMenu->ShowDialog();
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	ConsultaMenu^ ConMenu = gcnew ConsultaMenu(AMenu);
+	ConMenu->ShowDialog();
+}
+};
 }

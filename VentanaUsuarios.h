@@ -1,4 +1,10 @@
 #pragma once
+#include <msclr\marshal_cppstd.h>
+#include <iostream>
+#include "TP3.h"
+#include "OpcionesClientes.h"
+#include "OpcionesAdmin.h"
+#include "OpcionesFila.h"
 
 namespace InterfazTP3 {
 
@@ -14,6 +20,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class VentanaUsuarios : public System::Windows::Forms::Form
 	{
+	public: ArbolB* AClientes; ArbolB* AAdmins; arbolBinarioPais* APaises; arbolAVLProducto* AProductos; listaCola* LFila;
 	public:
 		VentanaUsuarios(void)
 		{
@@ -21,6 +28,16 @@ namespace InterfazTP3 {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+		}
+		VentanaUsuarios(ArbolB* ptrClientes, ArbolB* ptrAdmins, arbolBinarioPais* ptrPaises, arbolAVLProducto* ptrProductos, listaCola* ptrFila)
+		{
+			InitializeComponent();
+
+			AClientes = ptrClientes;
+			AAdmins = ptrAdmins;
+			APaises = ptrPaises;
+			AProductos = ptrProductos;
+			LFila = ptrFila;
 		}
 
 	protected:
@@ -70,6 +87,7 @@ namespace InterfazTP3 {
 			this->button3->Text = L"Fila";
 			this->button3->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageAboveText;
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &VentanaUsuarios::button3_Click);
 			// 
 			// button2
 			// 
@@ -83,6 +101,7 @@ namespace InterfazTP3 {
 			this->button2->Text = L"Administradores";
 			this->button2->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageAboveText;
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &VentanaUsuarios::button2_Click);
 			// 
 			// button1
 			// 
@@ -96,6 +115,7 @@ namespace InterfazTP3 {
 			this->button1->Text = L"Clientes";
 			this->button1->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageAboveText;
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &VentanaUsuarios::button1_Click);
 			// 
 			// VentanaUsuarios
 			// 
@@ -111,5 +131,17 @@ namespace InterfazTP3 {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		OpcionesClientes^ OpcClientes = gcnew OpcionesClientes(AClientes);
+		OpcClientes->ShowDialog();
+	}
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		OpcionesAdmin^ OpcAdmin = gcnew OpcionesAdmin(AAdmins);
+		OpcAdmin->ShowDialog();
+	}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	OpcionesFila^ OpcFila = gcnew OpcionesFila(APaises, AClientes, AProductos, LFila);
+	OpcFila->ShowDialog();
+}
+};
 }

@@ -128,9 +128,18 @@
     <ClCompile Include="ConsultaPais.cpp" />
     <ClCompile Include="ConsultaProducto.cpp" />
     <ClCompile Include="ConsultaRestaurante.cpp" />
+    <ClCompile Include="EliminarAdmin.cpp" />
+    <ClCompile Include="EliminarCiudad.cpp" />
+    <ClCompile Include="EliminarCliente.cpp" />
+    <ClCompile Include="EliminarMenu.cpp" />
+    <ClCompile Include="EliminarPais.cpp" />
+    <ClCompile Include="EliminarProducto.cpp" />
+    <ClCompile Include="EliminarRest.cpp" />
+    <ClCompile Include="Facturar.cpp" />
     <ClCompile Include="InsertarAdmin.cpp" />
     <ClCompile Include="InsertarCiudad.cpp" />
     <ClCompile Include="InsertarCliente.cpp" />
+    <ClCompile Include="InsertarContacto.cpp" />
     <ClCompile Include="InsertarMenu.cpp" />
     <ClCompile Include="InsertarPais.cpp" />
     <ClCompile Include="InsertarProducto.cpp" />
@@ -146,13 +155,21 @@
     <ClCompile Include="OpcionesAdmin.cpp" />
     <ClCompile Include="OpcionesCiudad.cpp" />
     <ClCompile Include="OpcionesClientes.cpp" />
+    <ClCompile Include="OpcionesFila.cpp" />
     <ClCompile Include="OpcionesMenu.cpp" />
     <ClCompile Include="OpcionesPaises.cpp" />
     <ClCompile Include="OpcionesProd.cpp" />
     <ClCompile Include="OpcionesRest.cpp" />
+    <ClCompile Include="ProductoCola.cpp" />
     <ClCompile Include="RegistrarCompra.cpp" />
+    <ClCompile Include="ReporteCantProd.cpp" />
+    <ClCompile Include="ReporteCiudades.cpp" />
+    <ClCompile Include="ReporteComprasCliente.cpp" />
+    <ClCompile Include="ReportePrecioProd.cpp" />
+    <ClCompile Include="ReporteRest.cpp" />
     <ClCompile Include="ventana1.cpp" />
     <ClCompile Include="VentanaLugares.cpp" />
+    <ClCompile Include="VentanaPagos.cpp" />
     <ClCompile Include="VentanaRest.cpp" />
     <ClCompile Include="VentanaUsuarios.cpp" />
     <ClCompile Include="VistaAdmin.cpp" />
@@ -179,6 +196,30 @@
     <ClInclude Include="ConsultaRestaurante.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="EliminarAdmin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EliminarCiudad.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EliminarCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EliminarMenu.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EliminarPais.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EliminarProducto.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EliminarRest.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Facturar.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="InsertarAdmin.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -186,6 +227,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="InsertarCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="InsertarContacto.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="InsertarMenu.h">
@@ -233,6 +277,9 @@
     <ClInclude Include="OpcionesClientes.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="OpcionesFila.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="OpcionesMenu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -245,7 +292,25 @@
     <ClInclude Include="OpcionesRest.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ProductoCola.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="RegistrarCompra.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ReporteCantProd.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ReporteCiudades.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ReporteComprasCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ReportePrecioProd.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ReporteRest.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="TP3.h" />
@@ -253,6 +318,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="VentanaLugares.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="VentanaPagos.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="VentanaRest.h">
@@ -287,6 +355,30 @@
     <EmbeddedResource Include="ConsultaRestaurante.resx">
       <DependentUpon>ConsultaRestaurante.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EliminarAdmin.resx">
+      <DependentUpon>EliminarAdmin.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarCiudad.resx">
+      <DependentUpon>EliminarCiudad.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarCliente.resx">
+      <DependentUpon>EliminarCliente.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarMenu.resx">
+      <DependentUpon>EliminarMenu.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarPais.resx">
+      <DependentUpon>EliminarPais.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarProducto.resx">
+      <DependentUpon>EliminarProducto.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarRest.resx">
+      <DependentUpon>EliminarRest.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturar.resx">
+      <DependentUpon>Facturar.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InsertarAdmin.resx">
       <DependentUpon>InsertarAdmin.h</DependentUpon>
     </EmbeddedResource>
@@ -295,6 +387,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InsertarCliente.resx">
       <DependentUpon>InsertarCliente.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertarContacto.resx">
+      <DependentUpon>InsertarContacto.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InsertarMenu.resx">
       <DependentUpon>InsertarMenu.h</DependentUpon>
@@ -317,6 +412,9 @@
     <EmbeddedResource Include="ModificarCliente.resx">
       <DependentUpon>ModificarCliente.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModificarCompra.resx">
+      <DependentUpon>ModificarCompra.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModificarMenu.resx">
       <DependentUpon>ModificarMenu.h</DependentUpon>
     </EmbeddedResource>
@@ -338,6 +436,9 @@
     <EmbeddedResource Include="OpcionesClientes.resx">
       <DependentUpon>OpcionesClientes.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesFila.resx">
+      <DependentUpon>OpcionesFila.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OpcionesMenu.resx">
       <DependentUpon>OpcionesMenu.h</DependentUpon>
     </EmbeddedResource>
@@ -350,11 +451,35 @@
     <EmbeddedResource Include="OpcionesRest.resx">
       <DependentUpon>OpcionesRest.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProductoCola.resx">
+      <DependentUpon>ProductoCola.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarCompra.resx">
+      <DependentUpon>RegistrarCompra.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteCantProd.resx">
+      <DependentUpon>ReporteCantProd.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteCiudades.resx">
+      <DependentUpon>ReporteCiudades.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteComprasCliente.resx">
+      <DependentUpon>ReporteComprasCliente.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportePrecioProd.resx">
+      <DependentUpon>ReportePrecioProd.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteRest.resx">
+      <DependentUpon>ReporteRest.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ventana1.resx">
       <DependentUpon>ventana1.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaLugares.resx">
       <DependentUpon>VentanaLugares.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaPagos.resx">
+      <DependentUpon>VentanaPagos.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaRest.resx">
       <DependentUpon>VentanaRest.h</DependentUpon>

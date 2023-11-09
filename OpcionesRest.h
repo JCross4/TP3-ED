@@ -1,4 +1,10 @@
 #pragma once
+#include <msclr\marshal_cppstd.h>
+#include <iostream>
+#include "TP3.h"
+#include "InsertarRest.h"
+#include "ModificarRest.h"
+#include "ConsultaRestaurante.h"
 
 namespace InterfazTP3 {
 
@@ -14,6 +20,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class OpcionesRest : public System::Windows::Forms::Form
 	{
+	public: arbolBinarioPais* APaises; ArbolRN* ARest;
 	public:
 		OpcionesRest(void)
 		{
@@ -21,6 +28,13 @@ namespace InterfazTP3 {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+		}
+		OpcionesRest(arbolBinarioPais* ptrPais, ArbolRN* ptrRest)
+		{
+			InitializeComponent();
+
+			APaises = ptrPais;
+			ARest = ptrRest;
 		}
 
 	protected:
@@ -80,6 +94,7 @@ namespace InterfazTP3 {
 			this->button4->TabIndex = 6;
 			this->button4->Text = L"Búsqueda";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &OpcionesRest::button4_Click);
 			// 
 			// button2
 			// 
@@ -91,6 +106,7 @@ namespace InterfazTP3 {
 			this->button2->TabIndex = 5;
 			this->button2->Text = L"Modificación";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &OpcionesRest::button2_Click);
 			// 
 			// button1
 			// 
@@ -102,6 +118,7 @@ namespace InterfazTP3 {
 			this->button1->TabIndex = 4;
 			this->button1->Text = L"Inserción";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &OpcionesRest::button1_Click);
 			// 
 			// OpcionesRest
 			// 
@@ -118,5 +135,17 @@ namespace InterfazTP3 {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		InsertarRest^ InsRest = gcnew InsertarRest(APaises, ARest);
+		InsRest->ShowDialog();
+	}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	ModificarRest^ ModRest = gcnew ModificarRest(ARest);
+	ModRest->ShowDialog();
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	ConsultaRestaurante^ ConRest = gcnew ConsultaRestaurante(ARest);
+	ConRest->ShowDialog();
+}
+};
 }

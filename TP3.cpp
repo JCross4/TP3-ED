@@ -386,6 +386,123 @@ pNodoAVLCiudad arbolAVLCiudad::RotacionSimpleIzquierda(NodoAVLCiudad* n, NodoAVL
     return n;
 }
 
+pNodoAVLCiudad arbolAVLCiudad::Borrar(pNodoAVLCiudad D, bool Hh)
+{
+    pNodoAVLCiudad q = NULL;
+    if (D->Hder != NULL) {
+        D->Hder = Borrar(D->Hder, Hh);
+        if (Hh) {
+            Equilibrar2(D, Hh);
+        }
+        else {
+            q->cod = D->cod;
+            q->codPais = D->codPais;
+            q->nombre = D->nombre;
+            q = D;
+            D = D->Hizq;
+            this->Hh = true;
+            return D;
+        }
+    }
+}
+
+pNodoAVLCiudad arbolAVLCiudad::BorrarBalanceado(pNodoAVLCiudad raiz, int x)
+{
+    pNodoAVLCiudad q = NULL;
+    if (raiz != NULL) {
+        if (x < raiz->cod) {
+            raiz->Hizq = BorrarBalanceado(raiz->Hizq, x);
+
+            if (Hh) {
+                raiz = Equilibrar1(raiz, Hh);
+            }
+            return raiz;
+        }
+        else {
+            if (x > raiz->cod) {
+                raiz->Hder = BorrarBalanceado(raiz->Hder, x);
+                if (Hh) {
+                    raiz = Equilibrar2(raiz, Hh);
+                }
+                return raiz;
+            }
+            else {
+                q = raiz;
+            }
+        }
+
+        if (q->Hder == NULL) {
+            if (raiz == this->raiz)
+                Hh = false;
+            else
+                Hh = true;
+            raiz = q->Hizq;
+            return raiz;
+        }
+        else {
+            if (q->Hizq == NULL) {
+                if (raiz == this->raiz)
+                    Hh = false;
+                else
+                    Hh = true;
+                raiz = q->Hder;
+                return raiz;
+            }
+            else {
+                Borrar(q->Hizq, Hh);
+            }
+            if (Hh) {
+                raiz = Equilibrar1(raiz, Hh);
+            }
+        }
+    }
+}
+
+pNodoAVLCiudad arbolAVLCiudad::Equilibrar1(pNodoAVLCiudad n, bool Hh) {
+    pNodoAVLCiudad n1;
+    switch (n->FB) {
+    case -1: n->FB = 0;
+        break;
+    case 0: n->FB = 1;
+        this->Hh = false;
+        break;
+    case 1: n1 = n->Hder;
+        if (n1->FB >= 0) {
+            if (n1->FB = 0) {
+                this->Hh = false;
+                n = RotacionSimpleDerecha(n, n1);
+            }
+            else {
+                n = RotacionDobleDerecha(n, n1);
+            }
+        }
+    }
+    return n;
+}
+
+pNodoAVLCiudad arbolAVLCiudad::Equilibrar2(pNodoAVLCiudad n, bool Hh) {
+    pNodoAVLCiudad n1;
+    switch (n->FB) {
+    case 1: n->FB = 0;
+        break;
+    case 0: n->FB = 1;
+        this->Hh = false;
+        break;
+    case -1: n1 = n->Hizq;
+        if (n1->FB <= 0) {
+            if (n1->FB = 0) {
+                this->Hh = false;
+                n = RotacionSimpleIzquierda(n, n1);
+            }
+            else {
+                n = RotacionDobleIzquierda(n, n1);
+            }
+        }
+    }
+    return n;
+}
+
+
 //Métodos de arbol AVL Producto
 
 //void NodoAVLCiudad::InsertaAVL(int pCodPais, int pCod, string pnombre)
@@ -618,6 +735,120 @@ pNodoAVLProducto arbolAVLProducto::RotacionSimpleIzquierda(NodoAVLProducto* n, N
     return n;
 }
 
+pNodoAVLProducto arbolAVLProducto::Borrar(pNodoAVLProducto D, bool Hh)
+{
+    pNodoAVLProducto q = NULL;
+    if (D->Hder != NULL) {
+        D->Hder = Borrar(D->Hder, Hh);
+        if (Hh) {
+            Equilibrar2(D, Hh);
+        }
+        else {
+            q->codProducto = D->codProducto;
+            q = D;
+            D = D->Hizq;
+            this->Hh = true;
+            return D;
+        }
+    }
+}
+
+pNodoAVLProducto arbolAVLProducto::BorrarBalanceado(pNodoAVLProducto raiz, int x)
+{
+    pNodoAVLProducto q = NULL;
+    if (raiz != NULL) {
+        if (x < raiz->codProducto) {
+            raiz->Hizq = BorrarBalanceado(raiz->Hizq, x);
+
+            if (Hh) {
+                raiz = Equilibrar1(raiz, Hh);
+            }
+            return raiz;
+        }
+        else {
+            if (x > raiz->codProducto) {
+                raiz->Hder = BorrarBalanceado(raiz->Hder, x);
+                if (Hh) {
+                    raiz = Equilibrar2(raiz, Hh);
+                }
+                return raiz;
+            }
+            else {
+                q = raiz;
+            }
+        }
+
+        if (q->Hder == NULL) {
+            if (raiz == this->raiz)
+                Hh = false;
+            else
+                Hh = true;
+            raiz = q->Hizq;
+            return raiz;
+        }
+        else {
+            if (q->Hizq == NULL) {
+                if (raiz == this->raiz)
+                    Hh = false;
+                else
+                    Hh = true;
+                raiz = q->Hder;
+                return raiz;
+            }
+            else {
+                Borrar(q->Hizq, Hh);
+            }
+            if (Hh) {
+                raiz = Equilibrar1(raiz, Hh);
+            }
+        }
+    }
+}
+
+pNodoAVLProducto arbolAVLProducto::Equilibrar1(pNodoAVLProducto n, bool Hh) {
+    pNodoAVLProducto n1;
+    switch (n->FB) {
+    case -1: n->FB = 0;
+        break;
+    case 0: n->FB = 1;
+        this->Hh = false;
+        break;
+    case 1: n1 = n->Hder;
+        if (n1->FB >= 0) {
+            if (n1->FB = 0) {
+                this->Hh = false;
+                n = RotacionSimpleDerecha(n, n1);
+            }
+            else {
+                n = RotacionDobleDerecha(n, n1);
+            }
+        }
+    }
+    return n;
+}
+
+pNodoAVLProducto arbolAVLProducto::Equilibrar2(pNodoAVLProducto n, bool Hh) {
+    pNodoAVLProducto n1;
+    switch (n->FB) {
+    case 1: n->FB = 0;
+        break;
+    case 0: n->FB = 1;
+        this->Hh = false;
+        break;
+    case -1: n1 = n->Hizq;
+        if (n1->FB <= 0) {
+            if (n1->FB = 0) {
+                this->Hh = false;
+                n = RotacionSimpleIzquierda(n, n1);
+            }
+            else {
+                n = RotacionDobleIzquierda(n, n1);
+            }
+        }
+    }
+    return n;
+}
+
 //Métodos de arbol binario de busqueda
 
 void NodoBinarioPais::InsertaBinario(int num, string pnombre)
@@ -648,6 +879,45 @@ void arbolBinarioPais::InsertaNodo(int num, string pnombre)
     else {
         raiz->InsertaBinario(num, pnombre);
     }
+}
+
+pNodoBinarioPais arbolBinarioPais::encontrarReemplazo(pNodoBinarioPais nodo) {
+    pNodoBinarioPais actual = nodo;
+    while (actual && actual->Hizq != nullptr) {
+        actual = actual->Hizq;
+    }
+    return actual;
+}
+
+pNodoBinarioPais arbolBinarioPais::eliminarPais(pNodoBinarioPais raiz, int pCod) {
+    if (raiz == nullptr) {
+        return raiz;
+    }
+
+    if (pCod < raiz->cod) {
+        raiz->Hizq = eliminarPais(raiz->Hizq, pCod);
+    }
+    else if (pCod > raiz->cod) {
+        raiz->Hder = eliminarPais(raiz->Hder, pCod);
+    }
+    else {
+        if (raiz->Hizq == nullptr) {
+            pNodoBinarioPais temp = raiz->Hder;
+            delete raiz;
+            return temp;
+        }
+        else if (raiz->Hder == nullptr) {
+            pNodoBinarioPais temp = raiz->Hizq;
+            delete raiz;
+            return temp;
+        }
+
+        pNodoBinarioPais temp = encontrarReemplazo(raiz->Hder);
+        raiz->cod = temp->cod;
+        raiz->Hder = eliminarPais(raiz->Hder, temp->cod);
+    }
+
+    return raiz;
 }
 
 //void arbolBinarioPais::PreordenI() {
@@ -1354,13 +1624,13 @@ void listaProductosCola::InsertarFinalProductosCola(pNodoAVLProducto nodo, int i
 
 }
 
-void listaS::InsertarFinalSimple(string pCedula, string pNombre)
+void listaS::InsertarFinalSimple(string pCedula, string pNombre, string pTelefono)
 {
     {
         if (ListaVacia())
         {
 
-            primero = new nodoS(pCedula, pNombre);
+            primero = new nodoS(pCedula, pNombre, pTelefono);
 
         }
         else
@@ -1368,7 +1638,7 @@ void listaS::InsertarFinalSimple(string pCedula, string pNombre)
             pnodoS aux = primero;
             while (aux->siguiente != NULL)
                 aux = aux->siguiente;
-            aux->siguiente = new nodoS(pCedula, pNombre);
+            aux->siguiente = new nodoS(pCedula, pNombre, pTelefono);
         }
     }
 
@@ -2531,7 +2801,6 @@ void listaCola::insertarNuevoClienteFila(int pCedula, arbolAVLProducto* AProduct
                     if (opcion == "1") {
                         pnodoProductosCola prodColaPtr = lProductosCliente.primero;
                         InsertarFinalCola(pCedula, prodColaPtr, opcion);
-                        AClientes->raiz->modificar(pCedula, "", 1);
                         cout << "\nSe ha insertado correctamente el cliente de cedula "; cout << pCedula; cout << " en la cola" << endl;
                         return;
                     }
@@ -3060,6 +3329,10 @@ void listaCola::modificarCola(int pCedula, int pCodProducto, int opcion, arbolAV
                     if (aux) {
                         aux->compras -= 1;
                         pNodoAVLProducto aux1 = AProductos->ValidarProducto(AProductos->raiz, pCodProductoNew);
+                        if (!aux1) {
+                            System::Windows::Forms::MessageBox::Show("No existe el nuevo producto", "Fila", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Error);
+                            return;
+                        }
                         aux1->compras += 1;
                         primero->codProducto = pCodProductoNew;
                         if (primero->cantidad > aux1->cantidad) {
@@ -3082,10 +3355,10 @@ void listaCola::modificarCola(int pCedula, int pCodProducto, int opcion, arbolAV
                                 }
                             }
                         }
-                        cout << "Se ha modificado correctamente el producto de la compra" << endl;
+                        System::Windows::Forms::MessageBox::Show("Se modificó correctamente", "Fila", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Asterisk);
                     }
                     else
-                        cout << "No existe un producto con el nuevo codigo indicado" << endl;
+                        System::Windows::Forms::MessageBox::Show("No existe un producto con el nuevo código indicado", "Fila", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Error);
                     return;
                 }
                 if (opcion == 2)
@@ -3095,10 +3368,11 @@ void listaCola::modificarCola(int pCedula, int pCodProducto, int opcion, arbolAV
                     if (pCantidadNew <= aux->cantidad) {
                         primero->cantidad = pCantidadNew;
                         aux->cantidad -= pCantidadNew;
+                        System::Windows::Forms::MessageBox::Show("Se modificó correctamente", "Fila", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Error);
                         //cout << "Se ha modificado correctamente la cantidad de compra del producto " + primero->codProducto << endl;
                         return;
                     }
-                    cout << "La cantidad debe ser menor a la disponible del producto" << endl;
+                    System::Windows::Forms::MessageBox::Show("La cantidad debe ser menor a la disponible", "Fila", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Error);
                     aux->cantidad -= primero->cantidad;
 
                     return;
@@ -3117,31 +3391,42 @@ void listaCola::modificarCola(int pCedula, int pCodProducto, int opcion, arbolAV
                             {
                                 if (nodoCola->cedula == pCedula) {
                                     nodoCola->productos = primero->siguiente;
-                                    return;
+                                    break;
                                 }
                                 nodoCola = nodoCola->siguiente;
                             }
                         }
                         delete primero;
-                        
-                        cout << "Se ha eliminado correctamente el producto de la compra" << endl;
+                        System::Windows::Forms::MessageBox::Show("Se ha eliminado correctamente el producto de la compra", "Fila", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Asterisk);
                     }
-                    else
-                        cout << "No existe un producto con el codigo indicado" << endl;
-                    return;
-
+                    else {
+                        System::Windows::Forms::MessageBox::Show("No existe un producto con el código indicado", "Fila", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Error);
+                        return;
+                    }
                 }
             }
             primero = primero->siguiente;
         }
-        cout << "Error" << endl;
         return;
     }
     else
-        cout << "El cliente con esa cedula no esta en la cola" << endl;
+        System::Windows::Forms::MessageBox::Show("El cliente con esa cédula no está en la fila", "Fila", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Error);
 }
 
 //Reportes
+
+void preordenElimProducto(NodoAVLProducto* R, int intCodMenu, arbolAVLProducto* AProd) {
+    if (R == NULL) {
+        return;
+    }
+    else {
+        if (R->codMenu = intCodMenu) {
+            AProd->BorrarBalanceado(AProd->raiz, R->codProducto);
+        }
+        preordenElimProducto(R->Hizq, intCodMenu, AProd);
+        preordenElimProducto(R->Hder, intCodMenu, AProd);
+    }
+}
 
 void preordenReporte(NodoBinarioPais* R) {
 
@@ -3363,7 +3648,8 @@ void ArbolRN::reporteRestMasBuscado() {
     int maxBusquedas = 0;
     pNodoARN masBuscado = Raiz;
     masBuscado = preordenReporteMasBuscado(Raiz, maxBusquedas);
-    reporteRest << "\nCódigo: "; reporteRest << masBuscado->cod; reporteRest<< "     Nombre: " + masBuscado->nombre + "       Cantidad de búsquedas: " + to_string(masBuscado->busquedas);
+    reporteRest << "\nCódigo: "; reporteRest << masBuscado->cod;
+    reporteRest<< "     Nombre: " + masBuscado->nombre + "       Cantidad de búsquedas: " + to_string(masBuscado->busquedas);
     reporteRest.close();
 }
 

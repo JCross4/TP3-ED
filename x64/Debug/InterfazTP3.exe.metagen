@@ -1,0 +1,320 @@
+  InterfazTP3.ConsultaAdmin.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.ConsultaCiudad.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.ConsultaCliente.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.ConsultaMenu.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.ConsultaPais.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.ConsultaProducto.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.ConsultaRestaurante.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.EliminarAdmin.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.EliminarCliente.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.EliminarMenu.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.EliminarPais.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.EliminarRest.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.InsertarAdmin.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.InsertarCiudad.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.InsertarCliente.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.InsertarMenu.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.InsertarPais.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.InsertarProducto.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.InsertarRest.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.ModificarAdmin.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.ModificarCiudad.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.ModificarCliente.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.ModificarMenu.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.ModificarPais.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.ModificarProducto.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.ModificarRest.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.OpcionesAdmin.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.OpcionesCiudad.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.OpcionesClientes.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.OpcionesMenu.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.OpcionesPaises.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.OpcionesProd.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.OpcionesRest.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.ventana1.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.VentanaLugares.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.VentanaRest.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.VentanaUsuarios.resources - Embedded, ContainedInManifestFile, 
+  InterfazTP3.VistaAdmin.resources - Embedded, ContainedInManifestFile, 
+ImageRuntimeVersion: v4.0.30319
+Assembly InterfazTP3, Version=0.0.*, Culture=Todos los idiomas (todos los países): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class InterfazTP3.ConsultaAdmin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolB*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    ArbolB* AAdmins : Public
+Class InterfazTP3.ConsultaCiudad: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+Class InterfazTP3.ConsultaCliente: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolB*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    ArbolB* AClientes : Public
+Class InterfazTP3.ConsultaMenu: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolAAMenu*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    ArbolAAMenu* AMenu : Public
+Class InterfazTP3.ConsultaPais: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+Class InterfazTP3.ConsultaProducto: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolAVLProducto*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolAVLProducto* AProd : Public
+Class InterfazTP3.ConsultaRestaurante: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolRN*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    ArbolRN* ARest : Public
+Class InterfazTP3.EliminarAdmin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolB*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    ArbolB* AAdmins : Public
+Class InterfazTP3.EliminarCliente: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolB*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    ArbolB* AClientes : Public
+Class InterfazTP3.EliminarMenu: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolAAMenu*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    ArbolAAMenu* AMenu : Public
+Class InterfazTP3.EliminarPais: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+Class InterfazTP3.EliminarRest: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolRN*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    ArbolRN* ARest : Public
+Class InterfazTP3.InsertarAdmin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolB*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    ArbolB* AAdmins : Public
+Class InterfazTP3.InsertarCiudad: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+Class InterfazTP3.InsertarCliente: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolB*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    ArbolB* AClientes : Public
+Class InterfazTP3.InsertarMenu: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*, ArbolRN*, ArbolAAMenu*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+    ArbolRN* ARest : Public
+    ArbolAAMenu* AMenu : Public
+Class InterfazTP3.InsertarPais: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+Class InterfazTP3.InsertarProducto: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*, ArbolRN*, ArbolAAMenu*, arbolAVLProducto*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+    ArbolRN* ARest : Public
+    ArbolAAMenu* AMenu : Public
+    arbolAVLProducto* AProd : Public
+Class InterfazTP3.InsertarRest: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*, ArbolRN*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+    ArbolRN* ARest : Public
+Class InterfazTP3.ModificarAdmin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolB*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    ArbolB* AAdmins : Public
+Class InterfazTP3.ModificarCiudad: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+Class InterfazTP3.ModificarCliente: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolB*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    ArbolB* AClientes : Public
+Class InterfazTP3.ModificarCompra: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class InterfazTP3.ModificarMenu: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolAAMenu*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    ArbolAAMenu* AMenu : Public
+Class InterfazTP3.ModificarPais: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+Class InterfazTP3.ModificarProducto: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolAVLProducto*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolAVLProducto* AProd : Public
+Class InterfazTP3.ModificarRest: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolRN*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    ArbolRN* ARest : Public
+Class InterfazTP3.OpcionesAdmin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolB*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    ArbolB* AAdmins : Public
+Class InterfazTP3.OpcionesCiudad: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+Class InterfazTP3.OpcionesClientes: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolB*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    ArbolB* AClientes : Public
+Class InterfazTP3.OpcionesMenu: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*, ArbolRN*, ArbolAAMenu*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+    ArbolRN* ARest : Public
+    ArbolAAMenu* AMenu : Public
+Class InterfazTP3.OpcionesPaises: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+Class InterfazTP3.OpcionesProd: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*, ArbolRN*, ArbolAAMenu*, arbolAVLProducto*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+    ArbolRN* ARest : Public
+    ArbolAAMenu* AMenu : Public
+    arbolAVLProducto* AProd : Public
+Class InterfazTP3.OpcionesRest: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*, ArbolRN*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+    ArbolRN* ARest : Public
+Class InterfazTP3.RegistrarCompra: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class InterfazTP3.RegistrarCompra1: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class InterfazTP3.VentanaLugares: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+Class InterfazTP3.VentanaRest: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*, ArbolRN*, ArbolAAMenu*, arbolAVLProducto*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+    ArbolRN* ARest : Public
+    ArbolAAMenu* AMenu : Public
+    arbolAVLProducto* AProd : Public
+Class InterfazTP3.VentanaUsuarios: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ArbolB*, ArbolB*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    ArbolB* AClientes : Public
+    ArbolB* AAdmins : Public
+Class InterfazTP3.VistaAdmin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*, ArbolRN*, ArbolAAMenu*, arbolAVLProducto*, ArbolB*, ArbolB*, listaCola*, listaS*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+    ArbolRN* ARestaurantes : Public
+    ArbolAAMenu* AMenu : Public
+    arbolAVLProducto* AProducto : Public
+    ArbolB* AClientes : Public
+    ArbolB* AAdmins : Public
+    listaCola* LFila : Public
+    listaS* LCompra : Public
+Class InterfazTP3.ventana1: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(arbolBinarioPais*, ArbolRN*, ArbolAAMenu*, arbolAVLProducto*, ArbolB*, ArbolB*, listaCola*, listaS*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    arbolBinarioPais* APaises : Public
+    ArbolRN* ARestaurantes : Public
+    ArbolAAMenu* AMenu : Public
+    arbolAVLProducto* AProducto : Public
+    ArbolB* AClientes : Public
+    ArbolB* AAdmins : Public
+    listaCola* LFila : Public
+    listaS* LCompra : Public

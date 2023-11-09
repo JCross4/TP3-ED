@@ -2,6 +2,9 @@
 #include <msclr\marshal_cppstd.h>
 #include <iostream>
 #include "TP3.h"
+#include "OpcionesRest.h"
+#include "OpcionesMenu.h"
+#include "OpcionesProd.h"
 
 namespace InterfazTP3 {
 
@@ -17,7 +20,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class VentanaRest : public System::Windows::Forms::Form
 	{
-	public: ArbolRN* ARest; ArbolAAMenu* AMenu; arbolAVLProducto* AProd;
+	public: arbolBinarioPais* APaises; ArbolRN* ARest; ArbolAAMenu* AMenu; arbolAVLProducto* AProd;
 	public:
 		VentanaRest(void)
 		{
@@ -27,10 +30,11 @@ namespace InterfazTP3 {
 			//s
 
 		}
-		VentanaRest(ArbolRN* ptrRest, ArbolAAMenu* ptrMenu, arbolAVLProducto* ptrProducto)
+		VentanaRest(arbolBinarioPais* ptrPais, ArbolRN* ptrRest, ArbolAAMenu* ptrMenu, arbolAVLProducto* ptrProducto)
 		{
 			InitializeComponent();
 
+			APaises = ptrPais;
 			ARest = ptrRest;
 			AMenu = ptrMenu;
 			AProd = ptrProducto;
@@ -83,6 +87,7 @@ namespace InterfazTP3 {
 			this->button2->Text = L"Menus";
 			this->button2->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageAboveText;
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &VentanaRest::button2_Click);
 			// 
 			// button1
 			// 
@@ -127,8 +132,16 @@ namespace InterfazTP3 {
 		}
 #pragma endregion
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		OpcionesProd^ OpcProd = gcnew OpcionesProd(APaises, ARest, AMenu, AProd);
+		OpcProd->ShowDialog();
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		OpcionesRest^ OpcRest = gcnew OpcionesRest(APaises, ARest);
+		OpcRest->ShowDialog();
 	}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	OpcionesMenu^ OpcMenu = gcnew OpcionesMenu(APaises, ARest, AMenu);
+	OpcMenu->ShowDialog();
+}
 };
 }

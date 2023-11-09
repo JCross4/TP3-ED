@@ -5,8 +5,8 @@ using namespace System::Windows::Forms;
 
  
 void main() {
-    arbolBinarioPais APaises; ArbolRN ARestaurantes; ArbolAAMenu AMenu; arbolAVLProducto AProductos; ArbolB AClientes; ArbolB AAdmins; listaS LCompra; listaCola LFila;
-    arbolBinarioPais* ptrPais = &APaises; ArbolRN* ptrRest = &ARestaurantes; ArbolAAMenu* ptrMenu = &AMenu; arbolAVLProducto* ptrProd = &AProductos; ArbolB* ptrClientes = &AClientes; ArbolB* ptrAdmins = &AAdmins; listaCola* ptrFila = &LFila; listaS* ptrCompra = &LCompra;
+    arbolBinarioPais APaises; ArbolRN ARestaurantes; ArbolAAMenu AMenu; arbolAVLProducto AProductos; ArbolB AClientes; ArbolB AAdmins; listaS LCompra; listaCola LFila; listaS LContacto;
+    arbolBinarioPais* ptrPais = &APaises; ArbolRN* ptrRest = &ARestaurantes; ArbolAAMenu* ptrMenu = &AMenu; arbolAVLProducto* ptrProd = &AProductos; ArbolB* ptrClientes = &AClientes; ArbolB* ptrAdmins = &AAdmins; listaCola* ptrFila = &LFila; listaS* ptrCompra = &LCompra; listaS* ptrContacto = &LContacto;
 
     //Cargar archivos
     int i = 0;
@@ -15,7 +15,7 @@ void main() {
 
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-    InterfazTP3::ventana1^ vista1 = gcnew InterfazTP3::ventana1(ptrPais, ptrRest, ptrMenu, ptrProd, ptrClientes, ptrAdmins, ptrFila, ptrCompra);
+    InterfazTP3::ventana1^ vista1 = gcnew InterfazTP3::ventana1(ptrPais, ptrRest, ptrMenu, ptrProd, ptrClientes, ptrAdmins, ptrFila, ptrCompra, ptrContacto);
     vista1->Show();
 	//InterfazTP3::ventana1 form;
 	Application::Run(vista1);

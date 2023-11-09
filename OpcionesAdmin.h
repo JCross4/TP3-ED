@@ -1,4 +1,10 @@
 #pragma once
+#include <msclr\marshal_cppstd.h>
+#include <iostream>
+#include "TP3.h"
+#include "InsertarAdmin.h"
+#include "ModificarAdmin.h"
+#include "ConsultaAdmin.h"
 
 namespace InterfazTP3 {
 
@@ -14,6 +20,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class OpcionesAdmin : public System::Windows::Forms::Form
 	{
+	public: ArbolB* AAdmins;
 	public:
 		OpcionesAdmin(void)
 		{
@@ -21,6 +28,11 @@ namespace InterfazTP3 {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+		}
+		OpcionesAdmin(ArbolB* ptrAdmin)
+		{
+			InitializeComponent();
+			AAdmins = ptrAdmin;
 		}
 
 	protected:
@@ -80,6 +92,7 @@ namespace InterfazTP3 {
 			this->button4->TabIndex = 6;
 			this->button4->Text = L"Búsqueda";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &OpcionesAdmin::button4_Click);
 			// 
 			// button2
 			// 
@@ -91,6 +104,7 @@ namespace InterfazTP3 {
 			this->button2->TabIndex = 5;
 			this->button2->Text = L"Modificación";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &OpcionesAdmin::button2_Click);
 			// 
 			// button1
 			// 
@@ -102,6 +116,7 @@ namespace InterfazTP3 {
 			this->button1->TabIndex = 4;
 			this->button1->Text = L"Inserción";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &OpcionesAdmin::button1_Click);
 			// 
 			// OpcionesAdmin
 			// 
@@ -118,5 +133,17 @@ namespace InterfazTP3 {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		InsertarAdmin^ InsAdmin = gcnew InsertarAdmin(AAdmins);
+		InsAdmin->ShowDialog();
+	}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	ModificarAdmin^ ModAdmin = gcnew ModificarAdmin(AAdmins);
+	ModAdmin->ShowDialog();
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	ConsultaAdmin^ ConAdmin = gcnew ConsultaAdmin(AAdmins);
+	ConAdmin->ShowDialog();
+}
+};
 }

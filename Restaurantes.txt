@@ -1,0 +1,12 @@
+912312;220;1;Rest1
+912312;400;2;Rest2
+1444;1;1;RestSingapur
+786;23;12;Ratatouille
+10;30;45;Chile Chile
+502;502;9;RestCan
+502;9;200;VancouverEats
+123;345;34;MacPanama
+345;987;456;Disney Springs
+4567;234;34;Mac
+12;34;234;MacBocas
+123;345;2341;X

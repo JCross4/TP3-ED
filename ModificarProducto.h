@@ -234,6 +234,7 @@ namespace InterfazTP3 {
 			this->groupBox1->TabIndex = 31;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Opciones";
+			this->groupBox1->Enter += gcnew System::EventHandler(this, &ModificarProducto::groupBox1_Enter);
 			// 
 			// opcionNombre
 			// 
@@ -384,6 +385,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 				else {
 					MessageBox::Show("Debe introducir las KCal", "Producto", MessageBoxButtons::OK, MessageBoxIcon::Error);
 				}
+				return;
 			}
 			if (opcionCant) {
 				if (strCantidad != "") {
@@ -394,6 +396,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 				else {
 					MessageBox::Show("Debe introducir la cantidad", "Producto", MessageBoxButtons::OK, MessageBoxIcon::Error);
 				}
+				return;
 			}
 			if (opcionPrecio) {
 				if (strPrecio != "") {
@@ -404,12 +407,17 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 				else {
 					MessageBox::Show("Debe introducir la cantidad", "Producto", MessageBoxButtons::OK, MessageBoxIcon::Error);
 				}
+				return;
 			}
 			if (opcionNombre) {
 				if (strNombre != "") {
 					AProd->modificarProducto(intCod, 1, strNombre, "", 0, 0);
 					MessageBox::Show("Se modificó correctamente el nombre", "Producto", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 				}
+				else {
+					MessageBox::Show("Debe introducir el nombre", "Producto", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				}
+				return;
 			}
 			
 		}
@@ -421,6 +429,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	else {
 		MessageBox::Show("Debe introducir un código de producto", "Producto", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
+}
+private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

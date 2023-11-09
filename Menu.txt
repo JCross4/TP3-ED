@@ -1,0 +1,10 @@
+912312;220;1;7;ComidaJaponesa
+912312;220;1;9;JapHelado
+1444;1;1;1;SingapurMenu
+10;30;45;30;ComidaTipica
+502;9;200;800;FastFood
+123;345;34;1;HC
+345;987;456;2;Acompañamientos
+4567;234;876;3;PolloyNuggets
+12;34;234;230;Acompañamientos
+123;345;2341;12;HP

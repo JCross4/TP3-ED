@@ -1,0 +1,11 @@
+912312;Japon
+1444;Singapur
+786;Francia
+10;Chile
+502;Canada
+123;Panama
+345;Estados Unidos
+4567;Mexico
+123;Peru
+10;Paises Bajos
+1444;Rusia

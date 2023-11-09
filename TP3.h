@@ -36,6 +36,7 @@ public:
     friend class Binario;
 
     void InsertaAVL(int pCodPais, int pCod, string pnombre);
+
 };
 
 typedef NodoAVLCiudad* pNodoAVLCiudad;
@@ -56,10 +57,10 @@ public:
     void InordenI();
     void PostordenI();*/
 
-    void Borrar(NodoAVLCiudad* nodoB, bool);
-    void BorrarBalanceado(NodoAVLCiudad* r, bool, int eliminar);
-    void Equilibrar1(NodoAVLCiudad* n, bool);
-    void Equilibrar2(NodoAVLCiudad* n, bool);
+    pNodoAVLCiudad Borrar(pNodoAVLCiudad nodoB, bool Hh);
+    pNodoAVLCiudad BorrarBalanceado(pNodoAVLCiudad r, int eliminar);
+    pNodoAVLCiudad Equilibrar1(pNodoAVLCiudad n, bool Hh);
+    pNodoAVLCiudad Equilibrar2(pNodoAVLCiudad n, bool Hh);
     pNodoAVLCiudad InsertarBalanceado(pNodoAVLCiudad ra, int pCodPais, int pCod, string pnombre);
     pNodoAVLCiudad RotacionDobleIzquierda(NodoAVLCiudad* n1, NodoAVLCiudad* n2);
     pNodoAVLCiudad RotacionDobleDerecha(NodoAVLCiudad* n1, NodoAVLCiudad* n2);
@@ -67,7 +68,34 @@ public:
     pNodoAVLCiudad RotacionSimpleDerecha(NodoAVLCiudad* n1, NodoAVLCiudad* n2);
     void archAArbolCiudad(string nombreA, int i);
     pNodoAVLCiudad ValidarCiudad(pNodoAVLCiudad raiz, int pCodCiudad);
-
+    pNodoAVLCiudad EliminarHoja(pNodoAVLCiudad ra, int pCod) {
+        if (ra == NULL) {
+            // No se encontró el nodo
+            return ra;
+        }
+        else if (pCod < ra->cod) {
+            ra->Hizq = EliminarHoja(ra->Hizq, pCod);
+        }
+        else if (pCod > ra->cod) {
+            ra->Hder = EliminarHoja(ra->Hder, pCod);
+        }
+        else {
+            // Se encontró el nodo hoja a eliminar
+            if (ra->Hizq == NULL && ra->Hder == NULL) {
+                delete ra;
+                ra = NULL;
+                return ra;
+            }
+            else {
+                // El nodo no es una hoja
+                // Manejar de acuerdo con los requisitos específicos del problema
+                cout << "El nodo no es una hoja." << endl;
+            }
+        }
+        // Actualizar el factor de equilibrio y realizar rotaciones si es necesario
+        // Luego, actualizar el equilibrio y devolver el nodo actualizado
+        return ra;
+    }
 };
 
 //Arbol Producto
@@ -116,10 +144,10 @@ public:
     void InordenI();
     void PostordenI();*/
 
-    void Borrar(NodoAVLProducto* nodoB, bool);
-    void BorrarBalanceado(NodoAVLProducto* r, bool, int eliminar);
-    void Equilibrar1(NodoAVLProducto* n, bool);
-    void Equilibrar2(NodoAVLProducto* n, bool);
+    pNodoAVLProducto Borrar(pNodoAVLProducto nodoB, bool Hh);
+    pNodoAVLProducto BorrarBalanceado(pNodoAVLProducto r, int eliminar);
+    pNodoAVLProducto Equilibrar1(pNodoAVLProducto n, bool Hh);
+    pNodoAVLProducto Equilibrar2(pNodoAVLProducto n, bool Hh);
     pNodoAVLProducto InsertarBalanceado(pNodoAVLProducto ra, int pCodPais, int pCodCiudad, int pCodRestaurante, int pCodMenu, int pCodProducto, string pnombre, string pKcal, int pPrecio, int pCantidad);
     pNodoAVLProducto RotacionDobleIzquierda(NodoAVLProducto* n1, NodoAVLProducto* n2);
     pNodoAVLProducto RotacionDobleDerecha(NodoAVLProducto* n1, NodoAVLProducto* n2);
@@ -191,6 +219,8 @@ public:
 
     void Borrar(NodoBinarioPais* nodoB, bool);
     void BorrarBalanceado(NodoBinarioPais* r, bool, int eliminar);
+    pNodoBinarioPais encontrarReemplazo(pNodoBinarioPais nodo);
+    pNodoBinarioPais eliminarPais(pNodoBinarioPais raiz, int pcedula);
     void archAArbolPais(string nombreA, int i);
     void archAArbolCiudad(string pNombreArch, int i);
     void archAArbolRest(string pNombreArch, int i, ArbolRN* pARest);
@@ -279,66 +309,7 @@ private:
         return Busqueda(nodo->Hder, numbuscado);
     }
 
-    /* // For balancing the tree after deletion
-     void deleteFix(NodePtr x) {
-       NodePtr s;
-       while (x != root && x->color == 0) {
-         if (x == x->parent->left) {
-           s = x->parent->right;
-           if (s->color == 1) {
-             s->color = 0;
-             x->parent->color = 1;
-             leftRotate(x->parent);
-             s = x->parent->right;
-           }
-
-           if (s->left->color == 0 && s->right->color == 0) {
-             s->color = 1;
-             x = x->parent;
-           } else {
-             if (s->right->color == 0) {
-               s->left->color = 0;
-               s->color = 1;
-               rightRotate(s);
-               s = x->parent->right;
-             }
-
-             s->color = x->parent->color;
-             x->parent->color = 0;
-             s->right->color = 0;
-             leftRotate(x->parent);
-             x = root;
-           }
-         } else {
-           s = x->parent->left;
-           if (s->color == 1) {
-             s->color = 0;
-             x->parent->color = 1;
-             rightRotate(x->parent);
-             s = x->parent->left;
-           }
-
-           if (s->right->color == 0 && s->right->color == 0) {
-             s->color = 1;
-             x = x->parent;
-           } else {
-             if (s->left->color == 0) {
-               s->right->color = 0;
-               s->color = 1;
-               leftRotate(s);
-               s = x->parent->left;
-             }
-
-             s->color = x->parent->color;
-             x->parent->color = 0;
-             s->left->color = 0;
-             rightRotate(x->parent);
-             x = root;
-           }
-         }
-       }
-       x->color = 0;
-     }*/
+    
 
     void rbModificar(pNodoARN uRaiz, pNodoARN vValor) {
         if (Raiz->padre == nullptr) {
@@ -473,7 +444,112 @@ private:
 
 public:
 
+    void deleteNode(int data) {
+        pNodoARN z = BusquedaM(data);
+        pNodoARN x, y;
+        if (z == TNULL) {
+            cout << "El nodo no existe en el árbol." << endl;
+            return;
+        }
 
+        if (z->Hizq == TNULL || z->Hder == TNULL) {
+            y = z;
+        }
+        else {
+            y = successor(z);
+        }
+
+        if (y->Hizq != TNULL) {
+            x = y->Hizq;
+        }
+        else {
+            x = y->Hder;
+        }
+
+        x->padre = y->padre;
+
+        if (y->padre == nullptr) {
+            Raiz = x;
+        }
+        else if (y == y->padre->Hizq) {
+            y->padre->Hizq = x;
+        }
+        else {
+            y->padre->Hder = x;
+        }
+
+        if (y != z) {
+            z->cod = y->cod;
+        }
+
+        if (y->color == 0) {
+            deleteBalanceado(x);
+        }
+        delete y;
+    }
+
+    void deleteBalanceado(pNodoARN x) {
+        pNodoARN s;
+        while (x != Raiz && x->color == 0) {
+            if (x == x->padre->Hizq) {
+                s = x->padre->Hder;
+                if (s->color == 1) {
+                    s->color = 0;
+                    x->padre->color = 1;
+                    RotacionIzquierda(x->padre);
+                    s = x->padre->Hder;
+                }
+
+                if (s->Hizq->color == 0 && s->Hder->color == 0) {
+                    s->color = 1;
+                    x = x->padre;
+                }
+                else {
+                    if (s->Hder->color == 0) {
+                        s->Hizq->color = 0;
+                        s->color = 1;
+                        RotacionDerecha(s);
+                        s = x->padre->Hder;
+                    }
+
+                    s->color = x->padre->color;
+                    x->padre->color = 0;
+                    s->Hder->color = 0;
+                    RotacionIzquierda(x->padre);
+                    x = Raiz;
+                }
+            }
+            else {
+                s = x->padre->Hizq;
+                if (s->color == 1) {
+                    s->color = 0;
+                    x->padre->color = 1;
+                    RotacionDerecha(x->padre);
+                    s = x->padre->Hizq;
+                }
+
+                if (s->Hder->color == 0 && s->Hizq->color == 0) {
+                    s->color = 1;
+                    x = x->padre;
+                }
+                else {
+                    if (s->Hizq->color == 0) {
+                        s->Hder->color = 0;
+                        s->color = 1;
+                        RotacionIzquierda(s);
+                        s = x->padre->Hizq;
+                    }
+
+                    s->color = x->padre->color;
+                    x->padre->color = 0;
+                    s->Hizq->color = 0;
+                    RotacionDerecha(x->padre);
+                    x = Raiz;
+                }
+            }
+        }
+        x->color = 0;
+    }
 
     ArbolRN() {
         TNULL = new NodoARNRest;
@@ -597,6 +673,7 @@ public:
         nodo->Hizq = TNULL;
         nodo->Hder = TNULL;
         nodo->color = 1;
+        nodo->busquedas = 0;
 
         pNodoARN y = nullptr;
         pNodoARN x = this->Raiz;
@@ -673,6 +750,7 @@ public:
     int nivel; // Nivel del nodo
 
     NodoAAMenu(int pcodPais, int pCodCiudad, int pCodRestaurante, string pnombre, int val) : codMenu(val), codPais(pcodPais), codCiudad(pCodCiudad), codRestaurante(pCodRestaurante), nombre(pnombre), izquierda(nullptr), derecha(nullptr), nivel(1) {}
+
 };
 
 class ArbolAAMenu {
@@ -700,6 +778,78 @@ public:
 
     // Función pública para imprimir el árbol en orden
     void imprimirEnOrden();
+
+    void corregirNivel(NodoAAMenu*& node) {
+        int level = 0;
+        if (node->izquierda && node->izquierda->nivel > level) {
+            level = node->izquierda->nivel;
+        }
+        if (node->derecha && node->derecha->nivel > level) {
+            level = node->derecha->nivel;
+        }
+        node->nivel = level + 1;
+    }
+
+    NodoAAMenu* findMin(NodoAAMenu* node) {
+        if (!node) {
+            return nullptr;
+        }
+        while (node->izquierda) {
+            node = node->izquierda;
+        }
+        return node;
+    }
+
+    NodoAAMenu* deleteNode(int key, NodoAAMenu*& node) {
+        if (!node) {
+            return nullptr;
+        }
+
+        if (key < node->codMenu) {
+            node->izquierda = deleteNode(key, node->izquierda);
+        }
+        else if (key > node->codMenu) {
+            node->derecha = deleteNode(key, node->derecha);
+        }
+        else {
+            if (!node->izquierda || !node->derecha) {
+                NodoAAMenu* temp = node;
+                node = (node->izquierda) ? node->izquierda : node->derecha;
+                delete temp;
+            }
+            else {
+                NodoAAMenu* minRight = findMin(node->derecha);
+                node->codMenu = minRight->codMenu;
+                node->derecha = deleteNode(minRight->codMenu, node->derecha);
+            }
+        }
+
+        if (node) {
+            corregirNivel(node);
+            if (node->izquierda && node->izquierda->nivel < node->nivel - 1) {
+                node->izquierda->nivel = node->nivel - 1;
+            }
+            if (node->derecha && node->derecha->nivel < node->nivel - 1) {
+                node->derecha->nivel = node->nivel - 1;
+            }
+            if (node->derecha && node->derecha->nivel > node->nivel) {
+                node->derecha->nivel = node->nivel;
+            }
+            if (node->izquierda && node->izquierda->nivel > node->nivel) {
+                rotacionIzquierda(node->izquierda);
+            }
+            if (node->derecha && node->derecha->derecha && node->derecha->derecha->nivel > node->nivel) {
+                rotacionDerecha(node);
+                node->nivel = node->derecha->derecha->nivel + 1;
+            }
+            if (node->derecha && node->derecha->izquierda && node->derecha->izquierda->nivel > node->nivel) {
+                rotacionDerecha(node->derecha);
+                rotacionDerecha(node);
+                node->nivel = node->derecha->derecha->nivel + 1;
+            }
+        }
+        return node;
+    }
 
     NodoAAMenu* validarMenu(NodoAAMenu* praiz, int pcodMenu);
     void insertarNuevoMenu(int pCodPais, int pCodCiudad, int pCodRestaurante, int pCodMenu, string pNombre, arbolBinarioPais* pLPaises, ArbolRN* pLRestaurante);
@@ -785,6 +935,143 @@ public:
     void modificarCliente(int pCedula, string pNombreNew);
     void reporteClientes();
     void reporteComprasCliente(int pCedula);
+
+    void remove(int key) {
+        remove(raiz, key);
+    }
+
+    void remove(NodoB* node, int key) {
+        if (node == nullptr) {
+            return;
+        }
+
+        int i = 0;
+        while (i < node->n && key > node->cedulas[i]) {
+            i++;
+        }
+
+        if (i < node->n && key == node->cedulas[i]) {
+            // Caso 1: La clave está en el nodo
+            if (node->hoja) {
+                // Caso 1a: Nodo hoja, simplemente elimina la clave
+                removeKey(node, i);
+            }
+            else {
+                // Caso 1b: Nodo interno, reemplaza la clave con la clave sucesora y sigue eliminando
+                int successorKey = getSuccessor(node, i);
+                remove(node->C[i + 1], successorKey);
+                node->cedulas[i] = successorKey;
+            }
+        }
+        else {
+            // Caso 2: La clave no está en el nodo actual
+            if (node->hoja) {
+                // La clave no existe en el árbol
+                return;
+            }
+            else {
+                // Caso 2b: El hijo i contiene la clave
+                if (node->C[i]->n == 1) {
+                    // Redistribuir o fusionar con el hermano
+                    redistributeOrMerge(node, i);
+                }
+                remove(node->C[i], key);
+            }
+        }
+    }
+
+    void removeKey(NodoB* node, int index) {
+        for (int i = index; i < node->n - 1; i++) {
+            node->cedulas[i] = node->cedulas[i + 1];
+        }
+        node->n--;
+    }
+
+    int getSuccessor(NodoB* node, int index) {
+        NodoB* current = node->C[index + 1];
+        while (!current->hoja) {
+            current = current->C[0];
+        }
+        return current->cedulas[0];
+    }
+
+    void redistributeOrMerge(NodoB* parent, int index) {
+        NodoB* child = parent->C[index];
+        NodoB* leftSibling = (index > 0) ? parent->C[index - 1] : nullptr;
+        NodoB* rightSibling = (index < parent->n) ? parent->C[index + 1] : nullptr;
+
+        if (leftSibling && leftSibling->n > 1) {
+            // Redistribuir desde el hermano izquierdo
+            for (int i = child->n; i > 0; i--) {
+                child->cedulas[i] = child->cedulas[i - 1];
+            }
+            child->cedulas[0] = parent->cedulas[index - 1];
+            parent->cedulas[index - 1] = leftSibling->cedulas[leftSibling->n - 1];
+
+            if (!child->hoja) {
+                for (int i = child->n + 1; i > 0; i--) {
+                    child->C[i] = child->C[i - 1];
+                }
+                child->C[0] = leftSibling->C[leftSibling->n];
+            }
+
+            child->n++;
+            leftSibling->n--;
+        }
+        else if (rightSibling && rightSibling->n > 1) {
+            // Redistribuir desde el hermano derecho
+            child->cedulas[child->n] = parent->cedulas[index];
+            parent->cedulas[index] = rightSibling->cedulas[0];
+            for (int i = 0; i < rightSibling->n - 1; i++) {
+                rightSibling->cedulas[i] = rightSibling->cedulas[i + 1];
+            }
+
+            if (!child->hoja) {
+                child->C[child->n + 1] = rightSibling->C[0];
+                for (int i = 0; i < rightSibling->n; i++) {
+                    rightSibling->C[i] = rightSibling->C[i + 1];
+                }
+            }
+
+            child->n++;
+            rightSibling->n--;
+        }
+        else if (leftSibling) {
+            // Fusionar con el hermano izquierdo
+            leftSibling->cedulas[leftSibling->n] = parent->cedulas[index - 1];
+            for (int i = 0; i < child->n; i++) {
+                leftSibling->cedulas[leftSibling->n + 1 + i] = child->cedulas[i];
+            }
+
+            if (!child->hoja) {
+                for (int i = 0; i <= child->n; i++) {
+                    leftSibling->C[leftSibling->n + 1 + i] = child->C[i];
+                }
+            }
+
+            leftSibling->n += child->n + 1;
+            removeKey(parent, index - 1);
+
+            delete child;
+        }
+        else if (rightSibling) {
+            // Fusionar con el hermano derecho
+            child->cedulas[child->n] = parent->cedulas[index];
+            for (int i = 0; i < rightSibling->n; i++) {
+                child->cedulas[child->n + 1 + i] = rightSibling->cedulas[i];
+            }
+
+            if (!child->hoja) {
+                for (int i = 0; i <= rightSibling->n; i++) {
+                    child->C[child->n + 1 + i] = rightSibling->C[i];
+                }
+            }
+
+            child->n += rightSibling->n + 1;
+            removeKey(parent, index);
+            delete rightSibling;
+        }
+    }
 };
 
 //Clases de listas
@@ -797,12 +1084,22 @@ public:
         cedula = pCedula;
         nombre = pNombre;
         siguiente = NULL;
+        telefono = "";
+
+    }
+    nodoS(string pCedula, string pNombre, string pTelefono)
+    {
+        cedula = pCedula;
+        nombre = pNombre;
+        telefono = pTelefono;
+        siguiente = NULL;
 
     }
 
 private:
     string cedula;
     string nombre;
+    string telefono;
     nodoS* siguiente;// Clase Autoreferencia
 
 
@@ -1012,9 +1309,10 @@ public:
     bool ListaVacia() { return primero == NULL; } //retorna True o False
     void Mostrar();//imprimir
     void archAListaS(string pNombreArch, int i);
-    void InsertarFinalSimple(string codPais, string nombre);
+    void InsertarFinalSimple(string codPais, string nombre, string pTelefono);
     pnodoS validarCedula(string pCedula);
     void insertarNuevoCliente(string pCedula, string pNombre);
+    void insertarNuevoContacto(string pCedula, string pNombre, string pTelefono);
     int largoLista();
     void eliminarCliente(string pCedula);
     void BorrarFinal(); void BorrarInicio(); void BorrarPosicion(int pos);
@@ -1098,6 +1396,8 @@ private:
 
 };
 
+void preordenElimProducto(NodoAVLProducto* R, int intCodMenu, arbolAVLProducto* AProd);
+
 class listaProductos {
 public:
     listaProductos() { primero = NULL; }
@@ -1140,7 +1440,6 @@ public:
     void BorrarInicio();
     void Mostrar();
 
-private:
     pnodoProductosCola primero;
 
     friend class listaCola;
