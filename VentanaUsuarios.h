@@ -20,7 +20,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class VentanaUsuarios : public System::Windows::Forms::Form
 	{
-	public: ArbolB* AClientes; ArbolB* AAdmins; arbolBinarioPais* APaises; arbolAVLProducto* AProductos; listaCola* LFila;
+	public: ArbolB* AClientes; ArbolB* AAdmins; arbolBinarioPais* APaises; arbolAVLProducto* AProductos; listaCola* LFila; int opcion;
 	public:
 		VentanaUsuarios(void)
 		{
@@ -29,7 +29,7 @@ namespace InterfazTP3 {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-		VentanaUsuarios(ArbolB* ptrClientes, ArbolB* ptrAdmins, arbolBinarioPais* ptrPaises, arbolAVLProducto* ptrProductos, listaCola* ptrFila)
+		VentanaUsuarios(ArbolB* ptrClientes, ArbolB* ptrAdmins, arbolBinarioPais* ptrPaises, arbolAVLProducto* ptrProductos, listaCola* ptrFila, int popcion)
 		{
 			InitializeComponent();
 
@@ -38,6 +38,7 @@ namespace InterfazTP3 {
 			APaises = ptrPaises;
 			AProductos = ptrProductos;
 			LFila = ptrFila;
+			opcion = popcion;
 		}
 
 	protected:
@@ -132,11 +133,11 @@ namespace InterfazTP3 {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		OpcionesClientes^ OpcClientes = gcnew OpcionesClientes(AClientes);
+		OpcionesClientes^ OpcClientes = gcnew OpcionesClientes(AClientes, opcion);
 		OpcClientes->ShowDialog();
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		OpcionesAdmin^ OpcAdmin = gcnew OpcionesAdmin(AAdmins);
+		OpcionesAdmin^ OpcAdmin = gcnew OpcionesAdmin(AAdmins, opcion);
 		OpcAdmin->ShowDialog();
 	}
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {

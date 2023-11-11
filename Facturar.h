@@ -1,4 +1,7 @@
 #pragma once
+#include <msclr\marshal_cppstd.h>
+#include <iostream>
+#include "TP3.h"
 
 namespace InterfazTP3 {
 
@@ -14,6 +17,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class Facturar : public System::Windows::Forms::Form
 	{
+	public: listaCola* LFila; arbolAVLProducto* AProd;
 	public:
 		Facturar(void)
 		{
@@ -21,6 +25,15 @@ namespace InterfazTP3 {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+		}
+		Facturar(listaCola* ptrFila, arbolAVLProducto* ptrProd)
+		{
+			InitializeComponent();
+			//
+			//TODO: agregar código de constructor aquí
+			//
+			LFila = ptrFila;
+			AProd = ptrProd;
 		}
 
 	protected:
@@ -87,6 +100,7 @@ namespace InterfazTP3 {
 			// radioButton1
 			// 
 			this->radioButton1->AutoSize = true;
+			this->radioButton1->Checked = true;
 			this->radioButton1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->radioButton1->Location = System::Drawing::Point(20, 29);
@@ -118,6 +132,7 @@ namespace InterfazTP3 {
 			this->button1->TabIndex = 2;
 			this->button1->Text = L"Facturar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Facturar::button1_Click);
 			// 
 			// Facturar
 			// 
@@ -136,5 +151,22 @@ namespace InterfazTP3 {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (LFila->largoLista() > 0) {
+			string metodo = "1";
+			if (radioButton1) {
+				metodo = "1";
+			}
+			else
+				metodo = "2";
+			LFila->facturar(AProd, metodo);
+			MessageBox::Show("Se creó la factura correctamente", "Facturar", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+		}
+		else
+		{
+			MessageBox::Show("No hay clientes en fila", "Facturar", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		
+	}
+};
 }

@@ -173,6 +173,7 @@
     <ClCompile Include="VentanaRest.cpp" />
     <ClCompile Include="VentanaUsuarios.cpp" />
     <ClCompile Include="VistaAdmin.cpp" />
+    <ClCompile Include="VistaCliente.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsultaAdmin.h">
@@ -332,6 +333,9 @@
     <ClInclude Include="VistaAdmin.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="VistaCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ConsultaAdmin.resx">
@@ -489,6 +493,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VistaAdmin.resx">
       <DependentUpon>VistaAdmin.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaCliente.resx">
+      <DependentUpon>VistaCliente.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

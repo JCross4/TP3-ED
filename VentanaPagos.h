@@ -18,7 +18,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class VentanaPagos : public System::Windows::Forms::Form
 	{
-	public: listaCola* LFila;
+	public: listaCola* LFila; arbolAVLProducto* AProd;
 	public:
 		VentanaPagos(void)
 		{
@@ -27,13 +27,14 @@ namespace InterfazTP3 {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-		VentanaPagos(listaCola* ptrFila)
+		VentanaPagos(listaCola* ptrFila, arbolAVLProducto* ptrProd)
 		{
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
 			//
 			LFila = ptrFila;
+			AProd = ptrProd;
 		}
 
 	protected:
@@ -81,6 +82,7 @@ namespace InterfazTP3 {
 			this->button2->Text = L"Descuento";
 			this->button2->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageAboveText;
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &VentanaPagos::button2_Click);
 			// 
 			// button1
 			// 
@@ -110,8 +112,11 @@ namespace InterfazTP3 {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		Facturar^ fact = gcnew Facturar();
+		Facturar^ fact = gcnew Facturar(LFila, AProd);
 		fact->ShowDialog();
+	}
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		MessageBox::Show("Descuento para llevar: 3%				Descuento para comer en el restaurante: 1%			Descuento para pago con tarjeta: 3%			Descuento para pago en efectivo: 1%", "Descuentos", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 	}
 	};
 }

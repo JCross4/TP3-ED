@@ -56,7 +56,7 @@ namespace InterfazTP3 {
 	public ref class VistaAdmin : public System::Windows::Forms::Form
 	{
 	
-	public: arbolBinarioPais* APaises; ArbolRN* ARestaurantes; ArbolAAMenu* AMenu; arbolAVLProducto* AProducto; ArbolB* AClientes; ArbolB* AAdmins; listaCola* LFila; listaS* LCompra; listaS* LContacto;
+	public: arbolBinarioPais* APaises; ArbolRN* ARestaurantes; ArbolAAMenu* AMenu; arbolAVLProducto* AProducto; ArbolB* AClientes; ArbolB* AAdmins; listaCola* LFila; listaS* LCompra; listaS* LContacto; listaS* LPaisesElim = new listaS; listaS* LCiudadesElim = new listaS; listaS* LRestaurantesElim = new listaS; listaS* LMenuElim = new listaS; listaS* LProductosElim = new listaS;
 	private: System::Windows::Forms::ToolStripMenuItem^ paísesToolStripMenuItem3;
 	public:
 	private: System::Windows::Forms::ToolStripMenuItem^ ciudadesToolStripMenuItem3;
@@ -89,6 +89,8 @@ namespace InterfazTP3 {
 	private: System::Windows::Forms::ToolStripMenuItem^ paisesEliminadosToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ descuentosToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ facturaciónToolStripMenuItem1;
+	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::Button^ button6;
 
 	private: System::Windows::Forms::Button^ button4;
 	public:
@@ -226,14 +228,16 @@ namespace InterfazTP3 {
 			this->menusEliminadosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->paisesEliminadosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->facturaciónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->descuentosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->facturaciónToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->acercaDeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->contactoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->descuentosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->facturaciónToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -642,30 +646,35 @@ namespace InterfazTP3 {
 			this->productosEliminadosToolStripMenuItem->Name = L"productosEliminadosToolStripMenuItem";
 			this->productosEliminadosToolStripMenuItem->Size = System::Drawing::Size(291, 22);
 			this->productosEliminadosToolStripMenuItem->Text = L"Productos eliminados";
+			this->productosEliminadosToolStripMenuItem->Click += gcnew System::EventHandler(this, &VistaAdmin::productosEliminadosToolStripMenuItem_Click);
 			// 
 			// restaurantesEliminadosToolStripMenuItem
 			// 
 			this->restaurantesEliminadosToolStripMenuItem->Name = L"restaurantesEliminadosToolStripMenuItem";
 			this->restaurantesEliminadosToolStripMenuItem->Size = System::Drawing::Size(291, 22);
 			this->restaurantesEliminadosToolStripMenuItem->Text = L"Restaurantes eliminados";
+			this->restaurantesEliminadosToolStripMenuItem->Click += gcnew System::EventHandler(this, &VistaAdmin::restaurantesEliminadosToolStripMenuItem_Click);
 			// 
 			// ciudadesEliminadasToolStripMenuItem
 			// 
 			this->ciudadesEliminadasToolStripMenuItem->Name = L"ciudadesEliminadasToolStripMenuItem";
 			this->ciudadesEliminadasToolStripMenuItem->Size = System::Drawing::Size(291, 22);
 			this->ciudadesEliminadasToolStripMenuItem->Text = L"Ciudades eliminadas";
+			this->ciudadesEliminadasToolStripMenuItem->Click += gcnew System::EventHandler(this, &VistaAdmin::ciudadesEliminadasToolStripMenuItem_Click);
 			// 
 			// menusEliminadosToolStripMenuItem
 			// 
 			this->menusEliminadosToolStripMenuItem->Name = L"menusEliminadosToolStripMenuItem";
 			this->menusEliminadosToolStripMenuItem->Size = System::Drawing::Size(291, 22);
 			this->menusEliminadosToolStripMenuItem->Text = L"Menus eliminados";
+			this->menusEliminadosToolStripMenuItem->Click += gcnew System::EventHandler(this, &VistaAdmin::menusEliminadosToolStripMenuItem_Click);
 			// 
 			// paisesEliminadosToolStripMenuItem
 			// 
 			this->paisesEliminadosToolStripMenuItem->Name = L"paisesEliminadosToolStripMenuItem";
 			this->paisesEliminadosToolStripMenuItem->Size = System::Drawing::Size(291, 22);
 			this->paisesEliminadosToolStripMenuItem->Text = L"Paises eliminados";
+			this->paisesEliminadosToolStripMenuItem->Click += gcnew System::EventHandler(this, &VistaAdmin::paisesEliminadosToolStripMenuItem_Click);
 			// 
 			// facturaciónToolStripMenuItem
 			// 
@@ -676,6 +685,20 @@ namespace InterfazTP3 {
 			this->facturaciónToolStripMenuItem->Name = L"facturaciónToolStripMenuItem";
 			this->facturaciónToolStripMenuItem->Size = System::Drawing::Size(81, 20);
 			this->facturaciónToolStripMenuItem->Text = L"Facturación";
+			// 
+			// descuentosToolStripMenuItem
+			// 
+			this->descuentosToolStripMenuItem->Name = L"descuentosToolStripMenuItem";
+			this->descuentosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->descuentosToolStripMenuItem->Text = L"Descuentos";
+			this->descuentosToolStripMenuItem->Click += gcnew System::EventHandler(this, &VistaAdmin::descuentosToolStripMenuItem_Click);
+			// 
+			// facturaciónToolStripMenuItem1
+			// 
+			this->facturaciónToolStripMenuItem1->Name = L"facturaciónToolStripMenuItem1";
+			this->facturaciónToolStripMenuItem1->Size = System::Drawing::Size(180, 22);
+			this->facturaciónToolStripMenuItem1->Text = L"Facturación";
+			this->facturaciónToolStripMenuItem1->Click += gcnew System::EventHandler(this, &VistaAdmin::facturaciónToolStripMenuItem1_Click);
 			// 
 			// acercaDeToolStripMenuItem
 			// 
@@ -747,17 +770,33 @@ namespace InterfazTP3 {
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &VistaAdmin::button4_Click);
 			// 
-			// descuentosToolStripMenuItem
+			// button5
 			// 
-			this->descuentosToolStripMenuItem->Name = L"descuentosToolStripMenuItem";
-			this->descuentosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->descuentosToolStripMenuItem->Text = L"Descuentos";
+			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button5.Image")));
+			this->button5->Location = System::Drawing::Point(107, 94);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(165, 105);
+			this->button5->TabIndex = 2;
+			this->button5->Text = L"Lugares";
+			this->button5->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageAboveText;
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &VistaAdmin::button1_Click);
 			// 
-			// facturaciónToolStripMenuItem1
+			// button6
 			// 
-			this->facturaciónToolStripMenuItem1->Name = L"facturaciónToolStripMenuItem1";
-			this->facturaciónToolStripMenuItem1->Size = System::Drawing::Size(180, 22);
-			this->facturaciónToolStripMenuItem1->Text = L"Facturación";
+			this->button6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button6.Image")));
+			this->button6->Location = System::Drawing::Point(107, 234);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(165, 105);
+			this->button6->TabIndex = 3;
+			this->button6->Text = L"Restaurantes";
+			this->button6->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageAboveText;
+			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &VistaAdmin::button2_Click);
 			// 
 			// VistaAdmin
 			// 
@@ -766,7 +805,9 @@ namespace InterfazTP3 {
 			this->ClientSize = System::Drawing::Size(744, 367);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button4);
+			this->Controls->Add(this->button6);
 			this->Controls->Add(this->button2);
+			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->menuStrip1);
@@ -878,31 +919,31 @@ private: System::Void compraToolStripMenuItem_Click(System::Object^ sender, Syst
 	ModCompra->ShowDialog();
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	VentanaLugares^ VentLug = gcnew VentanaLugares(APaises);
+	VentanaLugares^ VentLug = gcnew VentanaLugares(APaises, LPaisesElim, LCiudadesElim, 1);
 	VentLug->ShowDialog();
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	VentanaRest^ VentRest = gcnew VentanaRest(APaises, ARestaurantes, AMenu, AProducto);
+	VentanaRest^ VentRest = gcnew VentanaRest(APaises, ARestaurantes, AMenu, AProducto, LMenuElim, LProductosElim, LRestaurantesElim, 1);
 	VentRest->ShowDialog();
 }
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	VentanaUsuarios^ VentUser = gcnew VentanaUsuarios(AClientes, AAdmins, APaises, AProducto, LFila);
+	VentanaUsuarios^ VentUser = gcnew VentanaUsuarios(AClientes, AAdmins, APaises, AProducto, LFila, 1);
 	VentUser->ShowDialog();
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	VentanaPagos^ VentPagos = gcnew VentanaPagos(LFila);
+	VentanaPagos^ VentPagos = gcnew VentanaPagos(LFila, AProducto);
 	VentPagos->ShowDialog();
 }
 private: System::Void paísesToolStripMenuItem3_Click(System::Object^ sender, System::EventArgs^ e) {
-	EliminarPais^ ElimPais = gcnew EliminarPais(APaises);
+	EliminarPais^ ElimPais = gcnew EliminarPais(APaises, LPaisesElim);
 	ElimPais->ShowDialog();
 }
 private: System::Void menúToolStripMenuItem2_Click(System::Object^ sender, System::EventArgs^ e) {
-	EliminarMenu^ ElimMenu = gcnew EliminarMenu(AMenu, AProducto);
+	EliminarMenu^ ElimMenu = gcnew EliminarMenu(AMenu, AProducto, LMenuElim);
 	ElimMenu->ShowDialog();
 }
 private: System::Void restaurantesToolStripMenuItem3_Click(System::Object^ sender, System::EventArgs^ e) {
-	EliminarRest^ ElimRest = gcnew EliminarRest(ARestaurantes);
+	EliminarRest^ ElimRest = gcnew EliminarRest(ARestaurantes, LRestaurantesElim);
 	ElimRest->ShowDialog();
 }
 private: System::Void clientesToolStripMenuItem3_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -914,11 +955,11 @@ private: System::Void administradoresToolStripMenuItem2_Click(System::Object^ se
 	ElimAdmin->ShowDialog();
 }
 private: System::Void ciudadesToolStripMenuItem3_Click(System::Object^ sender, System::EventArgs^ e) {
-	EliminarCiudad^ ElimCiudad = gcnew EliminarCiudad(APaises);
+	EliminarCiudad^ ElimCiudad = gcnew EliminarCiudad(APaises, LCiudadesElim);
 	ElimCiudad->ShowDialog();
 }
 private: System::Void productosToolStripMenuItem3_Click(System::Object^ sender, System::EventArgs^ e) {
-	EliminarProducto^ ElimProd = gcnew EliminarProducto(AProducto);
+	EliminarProducto^ ElimProd = gcnew EliminarProducto(AProducto, LProductosElim);
 	ElimProd->ShowDialog();
 }
 private: System::Void paísesToolStripMenuItem4_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -971,7 +1012,7 @@ private: System::Void descuentoAplicadoPorPagarConTarjetaToolStripMenuItem_Click
 	}
 	else {
 		LFila->reporteDescuento(AProducto);
-		MessageBox::Show("Se creó el reporte correctamente", "Descuento", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		MessageBox::Show("Se creó el reporte correctamente", "Descuento", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 	}
 }
 private: System::Void cantidadDeUnProductoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -986,6 +1027,29 @@ private: System::Void acercaDeToolStripMenuItem_Click(System::Object^ sender, Sy
 	MessageBox::Show("Restaurantes TP3, José Calderón y Fernando Abarca", "Acerca de", MessageBoxButtons::OK, MessageBoxIcon::Information);
 }
 private: System::Void compraToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void paisesEliminadosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	LPaisesElim->reportePaisesElim();
+}
+
+private: System::Void facturaciónToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+	Facturar^ fact = gcnew Facturar(LFila, AProducto);
+	fact->ShowDialog();
+}
+private: System::Void menusEliminadosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	LMenuElim->reporteMenuElim();
+}
+private: System::Void ciudadesEliminadasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	LCiudadesElim->reporteCiudadElim();
+}
+private: System::Void restaurantesEliminadosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	LRestaurantesElim->reporteRestauranteElim();
+}
+private: System::Void productosEliminadosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	LProductosElim->reporteProductoElim();
+}
+private: System::Void descuentosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("Descuento para llevar: 3%				Descuento para comer en el restaurante: 1%			Descuento para pago con tarjeta: 3%			Descuento para pago en efectivo: 1%", "Descuentos", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 }
 };
 }

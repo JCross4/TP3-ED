@@ -17,7 +17,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class EliminarProducto : public System::Windows::Forms::Form
 	{
-	public: arbolAVLProducto* AProd;
+	public: arbolAVLProducto* AProd; listaS* LProdElim;
 	public:
 		EliminarProducto(void)
 		{
@@ -26,10 +26,11 @@ namespace InterfazTP3 {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-		EliminarProducto(arbolAVLProducto* ptrProd)
+		EliminarProducto(arbolAVLProducto* ptrProd, listaS* ptrProdElim)
 		{
 			InitializeComponent();
 			AProd = ptrProd;
+			LProdElim = ptrProdElim;
 
 			//TODO: agregar código de constructor aquí
 
@@ -134,6 +135,8 @@ namespace InterfazTP3 {
 		if (strCod != "") {
 			int intCod = std::stoi(strCod);
 			if (AProd->ValidarProducto(AProd->raiz, intCod)) {
+				pNodoAVLProducto producto = AProd->ValidarProducto(AProd->raiz, intCod);
+				LProdElim->InsertarFinalSimple(to_string(producto->codProducto), producto->nombre, to_string(producto->codMenu));
 				AProd->raiz = AProd->BorrarBalanceado(AProd->raiz, intCod);
 				MessageBox::Show("Se eliminó correctamente", "Producto", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 			}

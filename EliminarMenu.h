@@ -17,7 +17,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class EliminarMenu : public System::Windows::Forms::Form
 	{
-	public: ArbolAAMenu* AMenu; arbolAVLProducto* AProd;
+	public: ArbolAAMenu* AMenu; arbolAVLProducto* AProd; listaS* LMenuElim;
 	public:
 		EliminarMenu(void)
 		{
@@ -26,11 +26,12 @@ namespace InterfazTP3 {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-		EliminarMenu(ArbolAAMenu* ptrMenu, arbolAVLProducto* ptrProd)
+		EliminarMenu(ArbolAAMenu* ptrMenu, arbolAVLProducto* ptrProd, listaS* ptrMenuElim)
 		{
 			InitializeComponent();
 			AMenu = ptrMenu;
 			AProd = ptrProd;
+			LMenuElim = ptrMenuElim;
 
 			//TODO: agregar código de constructor aquí
 
@@ -133,6 +134,8 @@ namespace InterfazTP3 {
 		if (strCod != "") {
 			int intCod = std::stoi(strCod);
 			if (AMenu->validarMenu(AMenu->raiz, intCod)) {
+				NodoAAMenu* menu = AMenu->validarMenu(AMenu->raiz, intCod);
+				LMenuElim->InsertarFinalSimple(to_string(menu->codMenu), menu->nombre, to_string(menu->codCiudad));
 				AMenu->deleteNode(intCod, AMenu->raiz);
 				//preordenElimProducto(AProd->raiz, intCod, AProd);
 				MessageBox::Show("Se eliminó correctamente", "Menú", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);

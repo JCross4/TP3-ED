@@ -5,6 +5,7 @@
 #include "InsertarCiudad.h"
 #include "ModificarCiudad.h"
 #include "ConsultaCiudad.h"
+#include "EliminarCiudad.h"
 
 namespace InterfazTP3 {
 
@@ -20,7 +21,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class OpcionesCiudad : public System::Windows::Forms::Form
 	{
-	public: arbolBinarioPais* APaises;
+	public: arbolBinarioPais* APaises; listaS* LCiudadesElim; int opcion;
 	public:
 		OpcionesCiudad(void)
 		{
@@ -29,11 +30,13 @@ namespace InterfazTP3 {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-		OpcionesCiudad(arbolBinarioPais* ptrPaises)
+		OpcionesCiudad(arbolBinarioPais* ptrPaises, listaS* ptrCiudadesElim, int popcion)
 		{
 			InitializeComponent();
 
 			APaises = ptrPaises;
+			LCiudadesElim = ptrCiudadesElim;
+			opcion = popcion;
 		}
 
 	protected:
@@ -82,6 +85,7 @@ namespace InterfazTP3 {
 			this->button3->TabIndex = 7;
 			this->button3->Text = L"Eliminación";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &OpcionesCiudad::button3_Click);
 			// 
 			// button4
 			// 
@@ -130,6 +134,7 @@ namespace InterfazTP3 {
 			this->Controls->Add(this->button1);
 			this->Name = L"OpcionesCiudad";
 			this->Text = L"OpcionesCiudad";
+			this->Load += gcnew System::EventHandler(this, &OpcionesCiudad::OpcionesCiudad_Load);
 			this->ResumeLayout(false);
 
 		}
@@ -145,6 +150,17 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	ConsultaCiudad^ ConCiudad = gcnew ConsultaCiudad(APaises);
 	ConCiudad->ShowDialog();
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	EliminarCiudad^ ElimCiudad = gcnew EliminarCiudad(APaises, LCiudadesElim);
+	ElimCiudad->ShowDialog();
+}
+private: System::Void OpcionesCiudad_Load(System::Object^ sender, System::EventArgs^ e) {
+	if (opcion == 0) {
+		button1->Enabled = false;
+		button2->Enabled = false;
+		button3->Enabled = false;
+	}
 }
 };
 }

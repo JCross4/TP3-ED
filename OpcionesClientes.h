@@ -5,6 +5,7 @@
 #include "InsertarCliente.h"
 #include "ModificarCliente.h"
 #include "ConsultaCliente.h"
+#include "EliminarCliente.h"
 
 namespace InterfazTP3 {
 
@@ -20,7 +21,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class OpcionesClientes : public System::Windows::Forms::Form
 	{
-	public: ArbolB* AClientes;
+	public: ArbolB* AClientes; int opcion;
 	public:
 		OpcionesClientes(void)
 		{
@@ -29,10 +30,11 @@ namespace InterfazTP3 {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-		OpcionesClientes(ArbolB* ptrClientes)
+		OpcionesClientes(ArbolB* ptrClientes, int popcion)
 		{
 			InitializeComponent();
 			AClientes = ptrClientes;
+			opcion = popcion;
 		}
 
 	protected:
@@ -81,6 +83,7 @@ namespace InterfazTP3 {
 			this->button3->TabIndex = 7;
 			this->button3->Text = L"Eliminación";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &OpcionesClientes::button3_Click);
 			// 
 			// button4
 			// 
@@ -129,6 +132,7 @@ namespace InterfazTP3 {
 			this->Controls->Add(this->button1);
 			this->Name = L"OpcionesClientes";
 			this->Text = L"OpcionesClientes";
+			this->Load += gcnew System::EventHandler(this, &OpcionesClientes::OpcionesClientes_Load);
 			this->ResumeLayout(false);
 
 		}
@@ -144,6 +148,19 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	ConsultaCliente^ ConCliente = gcnew ConsultaCliente(AClientes);
 	ConCliente->ShowDialog();
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	EliminarCliente^ ElimCliente = gcnew EliminarCliente(AClientes);
+	ElimCliente->ShowDialog();
+}
+private: System::Void OpcionesClientes_Load(System::Object^ sender, System::EventArgs^ e) {
+	if (opcion == 0) {
+		button1->Enabled = false;
+		button2->Enabled = false;
+		button3->Enabled = false;
+	}
+	else
+		return;
 }
 };
 }

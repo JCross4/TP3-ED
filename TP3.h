@@ -1319,6 +1319,11 @@ public:
     void buscarCliente(string pCedula);
     void modificarCliente(string pCodCliente, string pNombreNew);
     void reporteClientes();
+    void reportePaisesElim();
+    void reporteMenuElim();
+    void reporteCiudadElim();
+    void reporteRestauranteElim();
+    void reporteProductoElim();
 
 private:
     pnodoS primero;

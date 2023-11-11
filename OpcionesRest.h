@@ -5,6 +5,7 @@
 #include "InsertarRest.h"
 #include "ModificarRest.h"
 #include "ConsultaRestaurante.h"
+#include "EliminarRest.h"
 
 namespace InterfazTP3 {
 
@@ -20,7 +21,9 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class OpcionesRest : public System::Windows::Forms::Form
 	{
-	public: arbolBinarioPais* APaises; ArbolRN* ARest;
+	public: arbolBinarioPais* APaises; ArbolRN* ARest; listaS* LRestElim; int opcion;
+	private: System::Windows::Forms::Button^ button3;
+	public:
 	public:
 		OpcionesRest(void)
 		{
@@ -29,12 +32,14 @@ namespace InterfazTP3 {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-		OpcionesRest(arbolBinarioPais* ptrPais, ArbolRN* ptrRest)
+		OpcionesRest(arbolBinarioPais* ptrPais, ArbolRN* ptrRest, listaS* ptrRestElim, int popcion)
 		{
 			InitializeComponent();
 
 			APaises = ptrPais;
 			ARest = ptrRest;
+			LRestElim = ptrRestElim;
+			opcion = popcion;
 		}
 
 	protected:
@@ -48,7 +53,7 @@ namespace InterfazTP3 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^ button3;
+
 	protected:
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::Button^ button2;
@@ -67,22 +72,11 @@ namespace InterfazTP3 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
-			// 
-			// button3
-			// 
-			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(78, 216);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(129, 37);
-			this->button3->TabIndex = 7;
-			this->button3->Text = L"Eliminación";
-			this->button3->UseVisualStyleBackColor = true;
 			// 
 			// button4
 			// 
@@ -120,6 +114,18 @@ namespace InterfazTP3 {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &OpcionesRest::button1_Click);
 			// 
+			// button3
+			// 
+			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button3->Location = System::Drawing::Point(78, 216);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(129, 37);
+			this->button3->TabIndex = 7;
+			this->button3->Text = L"Eliminación";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &OpcionesRest::button3_Click);
+			// 
 			// OpcionesRest
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -131,6 +137,7 @@ namespace InterfazTP3 {
 			this->Controls->Add(this->button1);
 			this->Name = L"OpcionesRest";
 			this->Text = L"OpcionesRest";
+			this->Load += gcnew System::EventHandler(this, &OpcionesRest::OpcionesRest_Load);
 			this->ResumeLayout(false);
 
 		}
@@ -146,6 +153,21 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	ConsultaRestaurante^ ConRest = gcnew ConsultaRestaurante(ARest);
 	ConRest->ShowDialog();
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	EliminarRest^ ElimRest = gcnew EliminarRest(ARest, LRestElim);
+	ElimRest->ShowDialog();
+}
+private: System::Void OpcionesRest_Load(System::Object^ sender, System::EventArgs^ e) {
+	if (opcion == 0) {
+		button1->Enabled = false;
+		button2->Enabled = false;
+		button3->Enabled = false;
+	}
+	else
+	{
+		return;
+	}
 }
 };
 }

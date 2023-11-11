@@ -5,6 +5,7 @@
 #include "InsertarProducto.h"
 #include "ModificarProducto.h"
 #include "ConsultaProducto.h"
+#include "EliminarProducto.h"
 
 namespace InterfazTP3 {
 
@@ -20,7 +21,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class OpcionesProd : public System::Windows::Forms::Form
 	{
-	public: arbolBinarioPais* APaises; ArbolRN* ARest; ArbolAAMenu* AMenu; arbolAVLProducto* AProd;
+	public: arbolBinarioPais* APaises; ArbolRN* ARest; ArbolAAMenu* AMenu; arbolAVLProducto* AProd; listaS* LProdElim; int opcion;
 	public:
 		OpcionesProd(void)
 		{
@@ -29,7 +30,7 @@ namespace InterfazTP3 {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-		OpcionesProd(arbolBinarioPais* ptrPaises, ArbolRN* ptrRest, ArbolAAMenu* ptrMenu, arbolAVLProducto* ptrProd)
+		OpcionesProd(arbolBinarioPais* ptrPaises, ArbolRN* ptrRest, ArbolAAMenu* ptrMenu, arbolAVLProducto* ptrProd, listaS* ptrProdElim, int popcion)
 		{
 			InitializeComponent();
 
@@ -37,6 +38,8 @@ namespace InterfazTP3 {
 			APaises = ptrPaises;
 			ARest = ptrRest;
 			AMenu = ptrMenu;
+			LProdElim = ptrProdElim;
+			opcion = popcion;
 		}
 
 	protected:
@@ -85,6 +88,7 @@ namespace InterfazTP3 {
 			this->button3->TabIndex = 7;
 			this->button3->Text = L"Eliminación";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &OpcionesProd::button3_Click);
 			// 
 			// button4
 			// 
@@ -133,6 +137,7 @@ namespace InterfazTP3 {
 			this->Controls->Add(this->button1);
 			this->Name = L"OpcionesProd";
 			this->Text = L"OpcionesProd";
+			this->Load += gcnew System::EventHandler(this, &OpcionesProd::OpcionesProd_Load);
 			this->ResumeLayout(false);
 
 		}
@@ -148,6 +153,20 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	ConsultaProducto^ ConProd = gcnew ConsultaProducto(AProd);
 	ConProd->ShowDialog();
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	EliminarProducto^ ElimProd = gcnew EliminarProducto(AProd, LProdElim);
+	ElimProd->ShowDialog();
+}
+private: System::Void OpcionesProd_Load(System::Object^ sender, System::EventArgs^ e) {
+	if (opcion == 0) {
+		button1->Enabled = false;
+		button2->Enabled = false;
+		button3->Enabled = false;
+	}
+	else {
+		return;
+	}
 }
 };
 }

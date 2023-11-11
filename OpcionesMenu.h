@@ -5,6 +5,7 @@
 #include "InsertarMenu.h"
 #include "ModificarMenu.h"
 #include "ConsultaMenu.h"
+#include "EliminarMenu.h"
 
 namespace InterfazTP3 {
 
@@ -20,7 +21,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class OpcionesMenu : public System::Windows::Forms::Form
 	{
-	public: arbolBinarioPais* APaises; ArbolRN* ARest; ArbolAAMenu* AMenu;
+	public: arbolBinarioPais* APaises; ArbolRN* ARest; ArbolAAMenu* AMenu; arbolAVLProducto* AProd; listaS* LMenuElim; int opcion;
 	public:
 		OpcionesMenu(void)
 		{
@@ -29,13 +30,16 @@ namespace InterfazTP3 {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-		OpcionesMenu(arbolBinarioPais* ptrPais, ArbolRN* ptrRest, ArbolAAMenu* ptrMenu)
+		OpcionesMenu(arbolBinarioPais* ptrPais, ArbolRN* ptrRest, ArbolAAMenu* ptrMenu, arbolAVLProducto* ptrProd, listaS* ptrMenuElim, int popcion)
 		{
 			InitializeComponent();
 
 			APaises = ptrPais;
 			ARest = ptrRest;
 			AMenu = ptrMenu;
+			AProd = ptrProd;
+			LMenuElim = ptrMenuElim;
+			opcion = popcion;
 		}
 
 	protected:
@@ -84,6 +88,7 @@ namespace InterfazTP3 {
 			this->button3->TabIndex = 7;
 			this->button3->Text = L"Eliminación";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &OpcionesMenu::button3_Click);
 			// 
 			// button4
 			// 
@@ -132,6 +137,7 @@ namespace InterfazTP3 {
 			this->Controls->Add(this->button1);
 			this->Name = L"OpcionesMenu";
 			this->Text = L"OpcionesMenu";
+			this->Load += gcnew System::EventHandler(this, &OpcionesMenu::OpcionesMenu_Load);
 			this->ResumeLayout(false);
 
 		}
@@ -147,6 +153,21 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	ConsultaMenu^ ConMenu = gcnew ConsultaMenu(AMenu);
 	ConMenu->ShowDialog();
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	EliminarMenu^ ElimMenu = gcnew EliminarMenu(AMenu, AProd, LMenuElim);
+	ElimMenu->ShowDialog();
+}
+private: System::Void OpcionesMenu_Load(System::Object^ sender, System::EventArgs^ e) {
+	if (opcion == 0) {
+		button1->Enabled = false;
+		button2->Enabled = false;
+		button3->Enabled = false;
+	}
+	else
+	{
+		return;
+	}
 }
 };
 }

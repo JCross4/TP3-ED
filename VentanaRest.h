@@ -20,7 +20,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class VentanaRest : public System::Windows::Forms::Form
 	{
-	public: arbolBinarioPais* APaises; ArbolRN* ARest; ArbolAAMenu* AMenu; arbolAVLProducto* AProd;
+	public: arbolBinarioPais* APaises; ArbolRN* ARest; ArbolAAMenu* AMenu; arbolAVLProducto* AProd; listaS* LMenuElim; listaS* LProdElim; listaS* LRestElim; int opcion;
 	public:
 		VentanaRest(void)
 		{
@@ -30,7 +30,7 @@ namespace InterfazTP3 {
 			//s
 
 		}
-		VentanaRest(arbolBinarioPais* ptrPais, ArbolRN* ptrRest, ArbolAAMenu* ptrMenu, arbolAVLProducto* ptrProducto)
+		VentanaRest(arbolBinarioPais* ptrPais, ArbolRN* ptrRest, ArbolAAMenu* ptrMenu, arbolAVLProducto* ptrProducto, listaS* ptrMenuElim, listaS* ptrProdElim, listaS* ptrRestElim, int popcion)
 		{
 			InitializeComponent();
 
@@ -38,6 +38,10 @@ namespace InterfazTP3 {
 			ARest = ptrRest;
 			AMenu = ptrMenu;
 			AProd = ptrProducto;
+			LMenuElim = ptrMenuElim;
+			LProdElim = ptrProdElim;
+			LRestElim = ptrRestElim;
+			opcion = popcion;
 		}
 
 	protected:
@@ -132,15 +136,15 @@ namespace InterfazTP3 {
 		}
 #pragma endregion
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-		OpcionesProd^ OpcProd = gcnew OpcionesProd(APaises, ARest, AMenu, AProd);
+		OpcionesProd^ OpcProd = gcnew OpcionesProd(APaises, ARest, AMenu, AProd, LProdElim, opcion);
 		OpcProd->ShowDialog();
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		OpcionesRest^ OpcRest = gcnew OpcionesRest(APaises, ARest);
+		OpcionesRest^ OpcRest = gcnew OpcionesRest(APaises, ARest, LRestElim, opcion);
 		OpcRest->ShowDialog();
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	OpcionesMenu^ OpcMenu = gcnew OpcionesMenu(APaises, ARest, AMenu);
+	OpcionesMenu^ OpcMenu = gcnew OpcionesMenu(APaises, ARest, AMenu, AProd, LMenuElim, opcion);
 	OpcMenu->ShowDialog();
 }
 };

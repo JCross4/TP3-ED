@@ -17,7 +17,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class EliminarCiudad : public System::Windows::Forms::Form
 	{
-	public: arbolBinarioPais* APaises;
+	public: arbolBinarioPais* APaises; listaS* LCiudadElim;
 	public:
 		EliminarCiudad(void)
 		{
@@ -26,10 +26,11 @@ namespace InterfazTP3 {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-		EliminarCiudad(arbolBinarioPais* ptrPaises)
+		EliminarCiudad(arbolBinarioPais* ptrPaises, listaS* ptrCiudadElim)
 		{
 			InitializeComponent();
 			APaises = ptrPaises;
+			LCiudadElim = ptrCiudadElim;
 
 			//TODO: agregar código de constructor aquí
 
@@ -161,6 +162,8 @@ namespace InterfazTP3 {
 			if (APaises->ValidarPais(APaises->raiz, intCod)) {
 				pNodoBinarioPais pais = APaises->ValidarPais(APaises->raiz, intCod);
 				if (pais->ciudades->ValidarCiudad(pais->ciudades->raiz, intCodC)) {
+					pNodoAVLCiudad ciudad = pais->ciudades->ValidarCiudad(pais->ciudades->raiz, intCodC);
+					LCiudadElim->InsertarFinalSimple(to_string(ciudad->cod), ciudad->nombre, to_string(ciudad->codPais));
 					pais->ciudades->raiz = pais->ciudades->BorrarBalanceado(pais->ciudades->raiz, intCodC);
 					MessageBox::Show("Se eliminó correctamente", "Ciudad", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 				}

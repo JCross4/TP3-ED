@@ -17,7 +17,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class EliminarPais : public System::Windows::Forms::Form
 	{
-	public: arbolBinarioPais* APaises;
+	public: arbolBinarioPais* APaises; listaS* LPaisesElim;
 	public:
 		EliminarPais(void)
 		{
@@ -26,10 +26,11 @@ namespace InterfazTP3 {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-		EliminarPais(arbolBinarioPais* ptrPaises)
+		EliminarPais(arbolBinarioPais* ptrPaises, listaS* ptrLPaisesElim)
 		{
 			InitializeComponent();
 			APaises = ptrPaises;
+			LPaisesElim = ptrLPaisesElim;
 
 			//TODO: agregar código de constructor aquí
 
@@ -73,7 +74,7 @@ namespace InterfazTP3 {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(107, 177);
+			this->button1->Location = System::Drawing::Point(103, 177);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 9;
@@ -132,7 +133,9 @@ namespace InterfazTP3 {
 		if (strCod != "") {
 			int intCod = std::stoi(strCod);
 			if (APaises->ValidarPais(APaises->raiz, intCod)) {
-				APaises->eliminarPais(APaises->raiz, intCod);
+				pNodoBinarioPais pais = APaises->ValidarPais(APaises->raiz, intCod);
+				LPaisesElim->InsertarFinalSimple(to_string(pais->cod), pais->nombre, pais->nombre);
+				APaises->raiz = APaises->eliminarPais(APaises->raiz, intCod);
 				MessageBox::Show("Se eliminó correctamente", "País", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 			}
 			else {

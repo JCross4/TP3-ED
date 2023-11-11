@@ -17,7 +17,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class EliminarRest : public System::Windows::Forms::Form
 	{
-	public: ArbolRN* ARest;
+	public: ArbolRN* ARest; listaS* LRestElim;
 	public:
 		EliminarRest(void)
 		{
@@ -26,10 +26,11 @@ namespace InterfazTP3 {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-		EliminarRest(ArbolRN* ptrRest)
+		EliminarRest(ArbolRN* ptrRest, listaS* ptrRestElim)
 		{
 			InitializeComponent();
 			ARest = ptrRest;
+			LRestElim = ptrRestElim;
 
 			//TODO: agregar código de constructor aquí
 
@@ -132,6 +133,8 @@ namespace InterfazTP3 {
 		if (strCod != "") {
 			int intCod = std::stoi(strCod);
 			if (ARest->validarRestaurante(ARest->getRaiz(), intCod)) {
+				pNodoARN rest = ARest->validarRestaurante(ARest->getRaiz(), intCod);
+				LRestElim->InsertarFinalSimple(to_string(rest->cod), rest->nombre, to_string(rest->codCiudad));
 				ARest->deleteNode(intCod);
 				MessageBox::Show("Se eliminó correctamente", "Restaurante", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 			}

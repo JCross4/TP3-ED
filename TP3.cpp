@@ -1062,7 +1062,7 @@ void NodoB::recorrerReporteClientes()
     for (i = 0; i < n; i++)
     {
         if (hoja == false)
-            C[i]->recorrer();
+            C[i]->recorrerReporteClientes();
         ofstream reporteClientes("Reporte Clientes.txt", ios::app);
         reporteClientes << "\nCedula: " << cedulas[i];
         reporteClientes << "          Nombre " << nombres[i];
@@ -1070,7 +1070,7 @@ void NodoB::recorrerReporteClientes()
     }
 
     if (hoja == false)
-        C[i]->recorrer();
+        C[i]->recorrerReporteClientes();
 }
 
 void NodoB::recorrerReporteCClientes(int pCedula)
@@ -2875,7 +2875,7 @@ void listaCola::facturar(arbolAVLProducto* AProd, string metodo) {
     if (precio >= mayorFactura) {
         mayorFactura = precio;
     }
-    if (precio < menorFactura) {
+    if (precio < menorFactura || menorFactura == 0) {
         menorFactura = precio;
     }
     delete nodoCola;
@@ -3841,6 +3841,82 @@ void listaCola::reporteDescuento(arbolAVLProducto* AProd) {
     reporteDesc.close();
     return;
 
+}
+
+void listaS::reportePaisesElim() {
+    if (primero == NULL) {
+        System::Windows::Forms::MessageBox::Show("No hay paises eliminados", "Reporte", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Error);
+        return;
+    }
+    ofstream reportePais("Reporte Paises eliminados.txt");
+    reportePais << "Reporte Lista de Paises eliminados" << endl;
+    while (primero) {
+        reportePais << "Código: " + primero->cedula + "     Nombre: " + primero->nombre << endl;
+        primero = primero->siguiente;
+    }
+    System::Windows::Forms::MessageBox::Show("Se creó correctamente el reporte", "Reporte", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Asterisk);
+    reportePais.close();
+}
+
+void listaS::reporteMenuElim() {
+    if (primero == NULL) {
+        System::Windows::Forms::MessageBox::Show("No hay menus eliminados", "Reporte", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Error);
+        return;
+    }
+    ofstream reportePais("Reporte Menus eliminados.txt");
+    reportePais << "Reporte Lista de Menus eliminados" << endl;
+    while (primero) {
+        reportePais << "Código: " + primero->cedula + "     Nombre: " + primero->nombre << endl;
+        primero = primero->siguiente;
+    }
+    System::Windows::Forms::MessageBox::Show("Se creó correctamente el reporte", "Reporte", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Asterisk);
+    reportePais.close();
+}
+
+void listaS::reporteCiudadElim() {
+    if (primero == NULL) {
+        System::Windows::Forms::MessageBox::Show("No hay ciudades eliminados", "Reporte", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Error);
+        return;
+    }
+    ofstream reportePais("Reporte Ciudades eliminadas.txt");
+    reportePais << "Reporte Lista de Ciudades eliminadas" << endl;
+    pnodoS ciudad = primero;
+    while (ciudad) {
+        reportePais << "Código de país: " + primero->telefono + "    Código: " + primero->cedula + "     Nombre: " + primero->nombre << endl;
+        ciudad = ciudad->siguiente;
+    }
+    System::Windows::Forms::MessageBox::Show("Se creó correctamente el reporte", "Reporte", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Asterisk);
+    reportePais.close();
+}
+
+void listaS::reporteRestauranteElim() {
+    if (primero == NULL) {
+        System::Windows::Forms::MessageBox::Show("No hay restaurantes eliminados", "Reporte", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Error);
+        return;
+    }
+    ofstream reportePais("Reporte Restaurantes eliminados.txt");
+    reportePais << "Reporte Lista de Restaurantes eliminados" << endl;
+    while (primero) {
+        reportePais << "Código de ciudad: " + primero->telefono + "    Código: " + primero->cedula + "     Nombre: " + primero->nombre << endl;
+        primero = primero->siguiente;
+    }
+    System::Windows::Forms::MessageBox::Show("Se creó correctamente el reporte", "Reporte", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Asterisk);
+    reportePais.close();
+}
+
+void listaS::reporteProductoElim() {
+    if (primero == NULL) {
+        System::Windows::Forms::MessageBox::Show("No hay productos eliminados", "Reporte", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Error);
+        return;
+    }
+    ofstream reportePais("Reporte Productos eliminados.txt");
+    reportePais << "Reporte Lista de Productos eliminados" << endl;
+    while (primero) {
+        reportePais << "Código de menu: " + primero->telefono + "    Código: " + primero->cedula + "     Nombre: " + primero->nombre << endl;
+        primero = primero->siguiente;
+    }
+    System::Windows::Forms::MessageBox::Show("Se creó correctamente el reporte", "Reporte", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Asterisk);
+    reportePais.close();
 }
 
 //Menú Inicio 

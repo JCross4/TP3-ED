@@ -4,6 +4,7 @@
 #include <iostream>
 #include "VistaAdmin.h"
 #include "TP3.cpp"
+#include "VistaCliente.h"
 
 
 
@@ -225,6 +226,8 @@ private: System::Void entrar_Click_1(System::Object^ sender, System::EventArgs^ 
 		if (clienteUsuario) {
 			if (AClientes->validarCedula(intCedula)) {
 				MessageBox::Show("El cliente existe", "Cliente", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
+				VistaCliente^ vistaC = gcnew VistaCliente(APaises, ARestaurantes, AMenu, AProducto, AClientes, AAdmins, LFila, LCompra, LContacto);
+				vistaC->ShowDialog();
 			}
 			else {
 				MessageBox::Show("El cliente no existe", "Cliente", MessageBoxButtons::OK, MessageBoxIcon::Error);

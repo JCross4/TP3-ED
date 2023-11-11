@@ -5,6 +5,7 @@
 #include "InsertarPais.h"
 #include "ModificarPais.h"
 #include "ConsultaPais.h"
+#include "EliminarPais.h"
 
 namespace InterfazTP3 {
 
@@ -20,7 +21,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class OpcionesPaises : public System::Windows::Forms::Form
 	{
-	public: arbolBinarioPais* APaises;
+	public: arbolBinarioPais* APaises; listaS* LPaisesElim; int opcion;
 	public:
 		OpcionesPaises(void)
 		{
@@ -29,11 +30,13 @@ namespace InterfazTP3 {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-		OpcionesPaises(arbolBinarioPais* ptrPaises)
+		OpcionesPaises(arbolBinarioPais* ptrPaises, listaS* ptrLPaisesElim, int popcion)
 		{
 			InitializeComponent();
 
 			APaises = ptrPaises;
+			LPaisesElim = ptrLPaisesElim;
+			opcion = popcion;
 		}
 
 	protected:
@@ -106,6 +109,7 @@ namespace InterfazTP3 {
 			this->button3->TabIndex = 3;
 			this->button3->Text = L"Eliminación";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &OpcionesPaises::button3_Click);
 			// 
 			// button4
 			// 
@@ -130,6 +134,7 @@ namespace InterfazTP3 {
 			this->Controls->Add(this->button1);
 			this->Name = L"OpcionesPaises";
 			this->Text = L"OpcionesPaises";
+			this->Load += gcnew System::EventHandler(this, &OpcionesPaises::OpcionesPaises_Load);
 			this->ResumeLayout(false);
 
 		}
@@ -145,6 +150,20 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	ConsultaPais^ ConsPais = gcnew ConsultaPais(APaises);
 	ConsPais->ShowDialog();
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	EliminarPais^ ElimPais = gcnew EliminarPais(APaises, LPaisesElim);
+	ElimPais->ShowDialog();
+}
+private: System::Void OpcionesPaises_Load(System::Object^ sender, System::EventArgs^ e) {
+	if (opcion == 0) {
+		button1->Enabled = false;
+		button2->Enabled = false;
+		button3->Enabled = false;
+	}
+	else {
+		return;
+	}
 }
 };
 }

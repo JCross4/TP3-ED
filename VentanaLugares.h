@@ -19,7 +19,7 @@ namespace InterfazTP3 {
 	/// </summary>
 	public ref class VentanaLugares : public System::Windows::Forms::Form
 	{
-	public: arbolBinarioPais* APaises;
+	public: arbolBinarioPais* APaises; listaS* LPaisesElim; listaS* LCiudadesElim; int opcion;
 	public:
 		VentanaLugares(void)
 		{
@@ -28,11 +28,14 @@ namespace InterfazTP3 {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-		VentanaLugares(arbolBinarioPais* ptrPaises)
+		VentanaLugares(arbolBinarioPais* ptrPaises, listaS* ptrPaisesElim, listaS* ptrCiudadesElim, int popcion)
 		{
 			InitializeComponent();
 
 			APaises = ptrPaises;
+			LPaisesElim = ptrPaisesElim;
+			LCiudadesElim = ptrCiudadesElim;
+			opcion = popcion;
 		}
 
 	protected:
@@ -110,11 +113,11 @@ namespace InterfazTP3 {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		OpcionesPaises^ opcPaises = gcnew OpcionesPaises(APaises);
+		OpcionesPaises^ opcPaises = gcnew OpcionesPaises(APaises, LPaisesElim, opcion);
 		opcPaises->ShowDialog();
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		OpcionesCiudad^ opcCiudad = gcnew OpcionesCiudad(APaises);
+		OpcionesCiudad^ opcCiudad = gcnew OpcionesCiudad(APaises, LCiudadesElim, opcion);
 		opcCiudad->ShowDialog();
 	}
 	};
