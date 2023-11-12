@@ -1,3 +1,0 @@
-Reporte Ciudades de Japon
-Código: 220    Nombre: Tokyo
-Código: 400    Nombre: Kyoto

@@ -1,2 +1,0 @@
-Reporte Restaurantes de Tokyo, Japon
-Código: 1    Nombre: Rest1

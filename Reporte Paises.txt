@@ -1,9 +1,0 @@
-Reporte Lista de Paises
-Código: 912312    Nombre: Japon
-Código: 1444    Nombre: Singapur
-Código: 786    Nombre: Francia
-Código: 10    Nombre: Chile
-Código: 502    Nombre: Canada
-Código: 123    Nombre: Panama
-Código: 345    Nombre: Estados Unidos
-Código: 4567    Nombre: Mexico
